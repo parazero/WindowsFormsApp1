@@ -263,6 +263,14 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.AbortArmDis = new System.Windows.Forms.TextBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.ClearFlashScreen = new System.Windows.Forms.Button();
+            this.FlashTextBox = new System.Windows.Forms.TextBox();
+            this.FlashBox = new System.Windows.Forms.GroupBox();
+            this.button9 = new System.Windows.Forms.Button();
+            this.SMAbutton = new System.Windows.Forms.Button();
+            this.FlashSCUbutton = new System.Windows.Forms.Button();
+            this.SenFlashbutton = new System.Windows.Forms.Button();
+            this.CCUFlashbutton = new System.Windows.Forms.Button();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.CloseBurnPort = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
@@ -286,20 +294,11 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.serialPort6 = new System.IO.Ports.SerialPort(this.components);
-            this.SMAFlashStatuspictureBox = new System.Windows.Forms.PictureBox();
-            this.SMAbutton = new System.Windows.Forms.Button();
-            this.FlashBox = new System.Windows.Forms.GroupBox();
-            this.SenFlashStatuspictureBox = new System.Windows.Forms.PictureBox();
-            this.CCUFlashStatuspictureBox = new System.Windows.Forms.PictureBox();
-            this.SCUFlashStatuspictureBox = new System.Windows.Forms.PictureBox();
-            this.SenFlashbutton = new System.Windows.Forms.Button();
-            this.CCUFlashbutton = new System.Windows.Forms.Button();
-            this.FlashSCUbutton = new System.Windows.Forms.Button();
-            this.EndFlashbutton = new System.Windows.Forms.Button();
-            this.FlashTextBox = new System.Windows.Forms.TextBox();
-            this.ClearFlashScreen = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.StartFlashBar = new System.Windows.Forms.ProgressBar();
+            this.startLED = new System.Windows.Forms.ProgressBar();
+            this.smaLED = new System.Windows.Forms.ProgressBar();
+            this.scuLED = new System.Windows.Forms.ProgressBar();
+            this.ccuLED = new System.Windows.Forms.ProgressBar();
+            this.sen = new System.Windows.Forms.ProgressBar();
             aa = new System.Windows.Forms.TabControl();
             aa.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -330,13 +329,9 @@
             this.groupBox13.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.tabPage8.SuspendLayout();
+            this.FlashBox.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SMAFlashStatuspictureBox)).BeginInit();
-            this.FlashBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SenFlashStatuspictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CCUFlashStatuspictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SCUFlashStatuspictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // aa
@@ -3255,6 +3250,103 @@
             this.tabPage8.Text = "Firmware Update";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
+            // ClearFlashScreen
+            // 
+            this.ClearFlashScreen.Location = new System.Drawing.Point(796, 391);
+            this.ClearFlashScreen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ClearFlashScreen.Name = "ClearFlashScreen";
+            this.ClearFlashScreen.Size = new System.Drawing.Size(76, 25);
+            this.ClearFlashScreen.TabIndex = 61;
+            this.ClearFlashScreen.Text = "Clear Screen";
+            this.ClearFlashScreen.UseVisualStyleBackColor = true;
+            this.ClearFlashScreen.Click += new System.EventHandler(this.ClearFlashScreen_Click);
+            // 
+            // FlashTextBox
+            // 
+            this.FlashTextBox.CausesValidation = false;
+            this.FlashTextBox.Location = new System.Drawing.Point(149, 110);
+            this.FlashTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FlashTextBox.Multiline = true;
+            this.FlashTextBox.Name = "FlashTextBox";
+            this.FlashTextBox.ReadOnly = true;
+            this.FlashTextBox.Size = new System.Drawing.Size(724, 307);
+            this.FlashTextBox.TabIndex = 60;
+            // 
+            // FlashBox
+            // 
+            this.FlashBox.Controls.Add(this.sen);
+            this.FlashBox.Controls.Add(this.ccuLED);
+            this.FlashBox.Controls.Add(this.scuLED);
+            this.FlashBox.Controls.Add(this.smaLED);
+            this.FlashBox.Controls.Add(this.startLED);
+            this.FlashBox.Controls.Add(this.button9);
+            this.FlashBox.Controls.Add(this.SMAbutton);
+            this.FlashBox.Controls.Add(this.FlashSCUbutton);
+            this.FlashBox.Controls.Add(this.SenFlashbutton);
+            this.FlashBox.Controls.Add(this.CCUFlashbutton);
+            this.FlashBox.Location = new System.Drawing.Point(5, 170);
+            this.FlashBox.Name = "FlashBox";
+            this.FlashBox.Size = new System.Drawing.Size(139, 222);
+            this.FlashBox.TabIndex = 59;
+            this.FlashBox.TabStop = false;
+            this.FlashBox.Text = "Flash Box";
+            // 
+            // button9
+            // 
+            this.button9.Enabled = false;
+            this.button9.Location = new System.Drawing.Point(5, 23);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(84, 28);
+            this.button9.TabIndex = 66;
+            this.button9.Text = "Start";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // SMAbutton
+            // 
+            this.SMAbutton.Enabled = false;
+            this.SMAbutton.Location = new System.Drawing.Point(5, 59);
+            this.SMAbutton.Name = "SMAbutton";
+            this.SMAbutton.Size = new System.Drawing.Size(85, 28);
+            this.SMAbutton.TabIndex = 57;
+            this.SMAbutton.Text = "Flash SmartAir";
+            this.SMAbutton.UseVisualStyleBackColor = true;
+            this.SMAbutton.Visible = false;
+            this.SMAbutton.Click += new System.EventHandler(this.SMAbutton_Click);
+            // 
+            // FlashSCUbutton
+            // 
+            this.FlashSCUbutton.Enabled = false;
+            this.FlashSCUbutton.Location = new System.Drawing.Point(5, 98);
+            this.FlashSCUbutton.Name = "FlashSCUbutton";
+            this.FlashSCUbutton.Size = new System.Drawing.Size(85, 28);
+            this.FlashSCUbutton.TabIndex = 60;
+            this.FlashSCUbutton.Text = "Flash SCU";
+            this.FlashSCUbutton.UseVisualStyleBackColor = true;
+            this.FlashSCUbutton.Visible = false;
+            // 
+            // SenFlashbutton
+            // 
+            this.SenFlashbutton.Enabled = false;
+            this.SenFlashbutton.Location = new System.Drawing.Point(5, 179);
+            this.SenFlashbutton.Name = "SenFlashbutton";
+            this.SenFlashbutton.Size = new System.Drawing.Size(85, 28);
+            this.SenFlashbutton.TabIndex = 62;
+            this.SenFlashbutton.Text = "Flash SenseAir";
+            this.SenFlashbutton.UseVisualStyleBackColor = true;
+            this.SenFlashbutton.Visible = false;
+            // 
+            // CCUFlashbutton
+            // 
+            this.CCUFlashbutton.Enabled = false;
+            this.CCUFlashbutton.Location = new System.Drawing.Point(5, 140);
+            this.CCUFlashbutton.Name = "CCUFlashbutton";
+            this.CCUFlashbutton.Size = new System.Drawing.Size(85, 28);
+            this.CCUFlashbutton.TabIndex = 61;
+            this.CCUFlashbutton.Text = "Flash CCU";
+            this.CCUFlashbutton.UseVisualStyleBackColor = true;
+            this.CCUFlashbutton.Visible = false;
+            // 
             // groupBox15
             // 
             this.groupBox15.Controls.Add(this.CloseBurnPort);
@@ -3424,6 +3516,7 @@
             this.BurnSystem.Name = "BurnSystem";
             this.BurnSystem.Size = new System.Drawing.Size(121, 21);
             this.BurnSystem.TabIndex = 50;
+            this.BurnSystem.SelectedIndexChanged += new System.EventHandler(this.BurnSystem_SelectedIndexChanged);
             // 
             // serialPort2
             // 
@@ -3457,155 +3550,55 @@
             // 
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
-            // SMAFlashStatuspictureBox
+            // startLED
             // 
-            this.SMAFlashStatuspictureBox.Location = new System.Drawing.Point(99, 58);
-            this.SMAFlashStatuspictureBox.Name = "SMAFlashStatuspictureBox";
-            this.SMAFlashStatuspictureBox.Size = new System.Drawing.Size(30, 28);
-            this.SMAFlashStatuspictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.SMAFlashStatuspictureBox.TabIndex = 58;
-            this.SMAFlashStatuspictureBox.TabStop = false;
+            this.startLED.Location = new System.Drawing.Point(103, 23);
+            this.startLED.Maximum = 1;
+            this.startLED.Name = "startLED";
+            this.startLED.Size = new System.Drawing.Size(30, 28);
+            this.startLED.TabIndex = 68;
+            this.startLED.Value = 1;
+            this.startLED.Visible = false;
             // 
-            // SMAbutton
+            // smaLED
             // 
-            this.SMAbutton.Enabled = false;
-            this.SMAbutton.Location = new System.Drawing.Point(5, 58);
-            this.SMAbutton.Name = "SMAbutton";
-            this.SMAbutton.Size = new System.Drawing.Size(85, 28);
-            this.SMAbutton.TabIndex = 57;
-            this.SMAbutton.Text = "Flash SmartAir";
-            this.SMAbutton.UseVisualStyleBackColor = true;
-            this.SMAbutton.Click += new System.EventHandler(this.SMAbutton_Click);
+            this.smaLED.Location = new System.Drawing.Point(103, 59);
+            this.smaLED.Maximum = 1;
+            this.smaLED.Name = "smaLED";
+            this.smaLED.Size = new System.Drawing.Size(30, 28);
+            this.smaLED.TabIndex = 69;
+            this.smaLED.Value = 1;
+            this.smaLED.Visible = false;
             // 
-            // FlashBox
+            // scuLED
             // 
-            this.FlashBox.Controls.Add(this.StartFlashBar);
-            this.FlashBox.Controls.Add(this.button9);
-            this.FlashBox.Controls.Add(this.EndFlashbutton);
-            this.FlashBox.Controls.Add(this.SenFlashStatuspictureBox);
-            this.FlashBox.Controls.Add(this.SMAbutton);
-            this.FlashBox.Controls.Add(this.CCUFlashStatuspictureBox);
-            this.FlashBox.Controls.Add(this.SMAFlashStatuspictureBox);
-            this.FlashBox.Controls.Add(this.SCUFlashStatuspictureBox);
-            this.FlashBox.Controls.Add(this.FlashSCUbutton);
-            this.FlashBox.Controls.Add(this.SenFlashbutton);
-            this.FlashBox.Controls.Add(this.CCUFlashbutton);
-            this.FlashBox.Location = new System.Drawing.Point(5, 170);
-            this.FlashBox.Name = "FlashBox";
-            this.FlashBox.Size = new System.Drawing.Size(139, 249);
-            this.FlashBox.TabIndex = 59;
-            this.FlashBox.TabStop = false;
-            this.FlashBox.Text = "Flash Box";
+            this.scuLED.Location = new System.Drawing.Point(103, 98);
+            this.scuLED.Maximum = 1;
+            this.scuLED.Name = "scuLED";
+            this.scuLED.Size = new System.Drawing.Size(30, 28);
+            this.scuLED.TabIndex = 70;
+            this.scuLED.Value = 1;
+            this.scuLED.Visible = false;
             // 
-            // SenFlashStatuspictureBox
+            // ccuLED
             // 
-            this.SenFlashStatuspictureBox.Location = new System.Drawing.Point(99, 183);
-            this.SenFlashStatuspictureBox.Name = "SenFlashStatuspictureBox";
-            this.SenFlashStatuspictureBox.Size = new System.Drawing.Size(30, 28);
-            this.SenFlashStatuspictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.SenFlashStatuspictureBox.TabIndex = 65;
-            this.SenFlashStatuspictureBox.TabStop = false;
-            this.SenFlashStatuspictureBox.Visible = false;
+            this.ccuLED.Location = new System.Drawing.Point(103, 140);
+            this.ccuLED.Maximum = 1;
+            this.ccuLED.Name = "ccuLED";
+            this.ccuLED.Size = new System.Drawing.Size(30, 28);
+            this.ccuLED.TabIndex = 71;
+            this.ccuLED.Value = 1;
+            this.ccuLED.Visible = false;
             // 
-            // CCUFlashStatuspictureBox
+            // sen
             // 
-            this.CCUFlashStatuspictureBox.Location = new System.Drawing.Point(99, 140);
-            this.CCUFlashStatuspictureBox.Name = "CCUFlashStatuspictureBox";
-            this.CCUFlashStatuspictureBox.Size = new System.Drawing.Size(30, 28);
-            this.CCUFlashStatuspictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.CCUFlashStatuspictureBox.TabIndex = 64;
-            this.CCUFlashStatuspictureBox.TabStop = false;
-            this.CCUFlashStatuspictureBox.Visible = false;
-            // 
-            // SCUFlashStatuspictureBox
-            // 
-            this.SCUFlashStatuspictureBox.Location = new System.Drawing.Point(99, 97);
-            this.SCUFlashStatuspictureBox.Name = "SCUFlashStatuspictureBox";
-            this.SCUFlashStatuspictureBox.Size = new System.Drawing.Size(30, 28);
-            this.SCUFlashStatuspictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.SCUFlashStatuspictureBox.TabIndex = 63;
-            this.SCUFlashStatuspictureBox.TabStop = false;
-            this.SCUFlashStatuspictureBox.Visible = false;
-            // 
-            // SenFlashbutton
-            // 
-            this.SenFlashbutton.Location = new System.Drawing.Point(5, 183);
-            this.SenFlashbutton.Name = "SenFlashbutton";
-            this.SenFlashbutton.Size = new System.Drawing.Size(85, 28);
-            this.SenFlashbutton.TabIndex = 62;
-            this.SenFlashbutton.Text = "Flash SenseAir";
-            this.SenFlashbutton.UseVisualStyleBackColor = true;
-            this.SenFlashbutton.Visible = false;
-            // 
-            // CCUFlashbutton
-            // 
-            this.CCUFlashbutton.Location = new System.Drawing.Point(5, 140);
-            this.CCUFlashbutton.Name = "CCUFlashbutton";
-            this.CCUFlashbutton.Size = new System.Drawing.Size(85, 28);
-            this.CCUFlashbutton.TabIndex = 61;
-            this.CCUFlashbutton.Text = "Flash CCU";
-            this.CCUFlashbutton.UseVisualStyleBackColor = true;
-            this.CCUFlashbutton.Visible = false;
-            // 
-            // FlashSCUbutton
-            // 
-            this.FlashSCUbutton.Location = new System.Drawing.Point(5, 97);
-            this.FlashSCUbutton.Name = "FlashSCUbutton";
-            this.FlashSCUbutton.Size = new System.Drawing.Size(85, 28);
-            this.FlashSCUbutton.TabIndex = 60;
-            this.FlashSCUbutton.Text = "Flash SCU";
-            this.FlashSCUbutton.UseVisualStyleBackColor = true;
-            this.FlashSCUbutton.Visible = false;
-            // 
-            // EndFlashbutton
-            // 
-            this.EndFlashbutton.Enabled = false;
-            this.EndFlashbutton.Location = new System.Drawing.Point(72, 218);
-            this.EndFlashbutton.Name = "EndFlashbutton";
-            this.EndFlashbutton.Size = new System.Drawing.Size(65, 28);
-            this.EndFlashbutton.TabIndex = 60;
-            this.EndFlashbutton.Text = "End Flash";
-            this.EndFlashbutton.UseVisualStyleBackColor = true;
-            // 
-            // FlashTextBox
-            // 
-            this.FlashTextBox.CausesValidation = false;
-            this.FlashTextBox.Location = new System.Drawing.Point(149, 110);
-            this.FlashTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.FlashTextBox.Multiline = true;
-            this.FlashTextBox.Name = "FlashTextBox";
-            this.FlashTextBox.ReadOnly = true;
-            this.FlashTextBox.Size = new System.Drawing.Size(724, 307);
-            this.FlashTextBox.TabIndex = 60;
-            // 
-            // ClearFlashScreen
-            // 
-            this.ClearFlashScreen.Location = new System.Drawing.Point(796, 391);
-            this.ClearFlashScreen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ClearFlashScreen.Name = "ClearFlashScreen";
-            this.ClearFlashScreen.Size = new System.Drawing.Size(76, 25);
-            this.ClearFlashScreen.TabIndex = 61;
-            this.ClearFlashScreen.Text = "Clear Screen";
-            this.ClearFlashScreen.UseVisualStyleBackColor = true;
-            this.ClearFlashScreen.Click += new System.EventHandler(this.ClearFlashScreen_Click);
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(5, 23);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(84, 28);
-            this.button9.TabIndex = 66;
-            this.button9.Text = "Start";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // StartFlashBar
-            // 
-            this.StartFlashBar.Location = new System.Drawing.Point(99, 23);
-            this.StartFlashBar.Maximum = 1;
-            this.StartFlashBar.Name = "StartFlashBar";
-            this.StartFlashBar.Size = new System.Drawing.Size(30, 28);
-            this.StartFlashBar.TabIndex = 62;
+            this.sen.Location = new System.Drawing.Point(103, 179);
+            this.sen.Maximum = 1;
+            this.sen.Name = "sen";
+            this.sen.Size = new System.Drawing.Size(30, 28);
+            this.sen.TabIndex = 72;
+            this.sen.Value = 1;
+            this.sen.Visible = false;
             // 
             // Form1
             // 
@@ -3670,15 +3663,11 @@
             this.groupBox11.PerformLayout();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
+            this.FlashBox.ResumeLayout(false);
             this.groupBox15.ResumeLayout(false);
             this.groupBox15.PerformLayout();
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SMAFlashStatuspictureBox)).EndInit();
-            this.FlashBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SenFlashStatuspictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CCUFlashStatuspictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SCUFlashStatuspictureBox)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -3940,19 +3929,18 @@
         private System.Windows.Forms.ProgressBar BurnProgressBar7;
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.GroupBox FlashBox;
-        private System.Windows.Forms.PictureBox SenFlashStatuspictureBox;
         private System.Windows.Forms.Button SMAbutton;
-        private System.Windows.Forms.PictureBox CCUFlashStatuspictureBox;
-        private System.Windows.Forms.PictureBox SMAFlashStatuspictureBox;
-        private System.Windows.Forms.PictureBox SCUFlashStatuspictureBox;
         private System.Windows.Forms.Button FlashSCUbutton;
         private System.Windows.Forms.Button SenFlashbutton;
         private System.Windows.Forms.Button CCUFlashbutton;
         private System.Windows.Forms.Button ClearFlashScreen;
         private System.Windows.Forms.TextBox FlashTextBox;
-        private System.Windows.Forms.Button EndFlashbutton;
-        private System.Windows.Forms.ProgressBar StartFlashBar;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.ProgressBar sen;
+        private System.Windows.Forms.ProgressBar ccuLED;
+        private System.Windows.Forms.ProgressBar scuLED;
+        private System.Windows.Forms.ProgressBar smaLED;
+        private System.Windows.Forms.ProgressBar startLED;
     }
 }
 
