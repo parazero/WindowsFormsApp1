@@ -59,7 +59,7 @@ namespace WindowsFormsApp1
         string PitchValue;
         string PwmRCvalue;
         string PressureValue;
-
+        
         private string path= Directory.GetCurrentDirectory();
         private string dataIN1 = "";
         private string dataIN2 = "";
@@ -97,7 +97,7 @@ namespace WindowsFormsApp1
         string[] AllParams = { "ARH", "DRH", "AHS", "VIB", "NVI", "VIT", "HST", "DISE", "ARME", "VIF", "ARM", "PCV", "RCV", "LGR", "MST", "IMU", "SVPY", "SPR", "PTS", "PRV", "RCE", "EBT", "BNC", "MCV", "SPV", "XBT", "MTD", "PWM", "PSOF", "PSON", "PSTO", "RCST", "DST", "USD", "BCLS", "BCLL", "POO", "ADFD", "ADSD", "ADTD", "UFW", "PNO", "SNO", "ESR", "INV", "BET", "SMR", "INC", "TRG", "ATTR", "ATTP", "FFC", "FFL" };
         string[] M200ParamsValue = { "7", "0", "1", "0.05", "3",  "VIT", "HST", "DISE", "ARME", "100", "2",   "PCV", "RCV", "0",   "MST", "19",  "SVPY", "0.35", "15", "PRV", "0",   "0", "3", "3.5", "SPV", "1", "50", "1", "PSOF", "PSON", "PSTO", "RCST", "0", "1", "BCLS", "BCLL", "POO", "ADFD", "ADSD", "ADTD", "UFW", "0.2", "32", "100", "0", "0.3", "10", "3.5", "1", "55", "55", "300", "6.8" };
         string[] M600ParamsValue = { "7", "5", "1", "0.05", "5",  "VIT", "HST", "DISE", "ARME", "100", "2",   "PCV", "RCV", "0",   "MST", "19",  "SVPY", "0.35", "15", "PRV", "0",   "0", "3", "3.5", "SPV", "0", "50", "1", "PSOF", "PSON", "PSTO", "RCST", "0", "1", "BCLS", "BCLL", "POO", "ADFD", "ADSD", "ADTD", "UFW", "0.2", "32", "100", "0", "0.3", "10", "3.5", "1", "65", "65", "130", "7" };
-        string[] Phantom3ParamsValue = { "5", "0", "AHS", "0.08", "5", "10", "0.3", "2", "3", "100",   "2",   "PCV", "RCV", "0",   "0",   "19",  "1",    "0.35", "15", "4",   "0",   "EBT", "1", "3.7", "3.5", "0", "1", "1", "1000", "1900", "1", "60", "10", "1", "20", "30", "200", "80", "5", "150", "80", "0.2", "32", "100", "0", "0.3", "10", "3.5", "1", "65", "65", "500", "7.3" };
+        string[] Phantom4ParamsValue = { "5", "0", "AHS", "0.08", "5", "10", "0.3", "2", "3", "100",   "2",   "PCV", "RCV", "0",   "0",   "19",  "1",    "0.35", "15", "4",   "0",   "EBT", "1", "3.7", "3.5", "0", "1", "1", "1000", "1900", "1", "60", "10", "1", "20", "30", "200", "80", "5", "150", "80", "0.2", "32", "100", "0", "0.3", "10", "3.5", "1", "65", "65", "500", "7.3" };
         string[] CurrentConf = { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
         //int[] bits = { 0, 0, 0, 0, 0 };
         double[] CurrentConfValue = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -1017,6 +1017,7 @@ namespace WindowsFormsApp1
         {
             CalButtonStatus = false;
             Application.DoEvents();
+            FullTextSmartAir5units[i] = "";
             switch (i)
             {
                 case 0:
@@ -1074,8 +1075,10 @@ namespace WindowsFormsApp1
                     RST_5th.Enabled = true;
                     break;
             }
+            MessageBox.Show("Wait until system boot is complete");
             WaitForSuccessfulInit(i);
-            Thread.Sleep(500); Application.DoEvents();
+            Thread.Sleep(1500); Application.DoEvents();
+            MessageBox.Show("Press OK to reset the PCV and RCV values");
             WriteToSingleSmartAir("rcv 0", i);
             Thread.Sleep(500);Application.DoEvents();
             WriteToSingleSmartAir("pcv 0", i);
@@ -2924,6 +2927,7 @@ namespace WindowsFormsApp1
 
         private void StartCalb1_Click(object sender, EventArgs e)
         {
+            //DialogResult dr = MessageBox.Show("Manual", "Automated", MessageBoxButtons.YesNo);
             if (StartCalb1.Text == "Start")
             {
                 CAL_1st.Text = "Calibration";
@@ -3272,7 +3276,7 @@ namespace WindowsFormsApp1
             Thread.Sleep(1250);
             Cancel1.Enabled = true;
             Application.DoEvents();
-            Phantom3_FinalConfiguration(0);
+            Phantom4_FinalConfiguration(0);
             Application.DoEvents();
             Arm1.Enabled = true;
             Fire1.Enabled = true;
@@ -3294,13 +3298,13 @@ namespace WindowsFormsApp1
             Cancel1.Visible = false;
         }
 
-        private void Phantom3_FinalConfiguration(int s)
+        private void Phantom4_FinalConfiguration(int s)
         {
             Thread.Sleep(1000);
             Application.DoEvents();
             //ReturnToIdleSingleSMA(s);
             ParamsList1.Visible = true;
-            InitBoard_Nano(AllParams, Phantom3ParamsValue, s);
+            InitBoard_Nano(AllParams, Phantom4ParamsValue, s);
             CloseParam1.Visible = true;
             ClearParam1.Visible = true;
             if (ParamReserNeed)
@@ -3508,15 +3512,29 @@ namespace WindowsFormsApp1
 
         private void SMAbutton_Click(object sender, EventArgs e)
         {
+            bool again = true;
             EndCondition = false;
             string LocalPathFM="";
             SMAbutton.Enabled = false;
             FullTextSmartAir5units[0] = "";
+            SendToSMAChars("SMA");
+            //WriteToSingleSmartAir("sma", 0);
+            Application.DoEvents();
+            Thread.Sleep(1000);
             switch (BurnSystem.Text)
             {
                 case "Nano":
                     if (BurnVersion.Text == "Firmware Default")
-                        LocalPathFM = @"C:\Users\User\Documents\Firmware\Nano_FW\NANO.bin";
+                    {
+                        Application.DoEvents();
+                        Thread.Sleep(1000);
+                        MemoryStream Temp = new MemoryStream();
+                        Temp.Write(Resource1.Nano, 0, Resource1.Nano.Length);
+                        Temp.Position = 0;
+                        YmodemUploadFile_DefaultFile(Temp); Thread.Sleep(100); Application.DoEvents();
+                        //string SmaPath = path + "\\Firmware\\V2_FW\\SmartAir_STM32.bin";
+                        //YmodemUploadFile(SmaPath);
+                    }
                     else if (BurnVersion.Text == "Manual selection firmware")
                     {
                         var folderBrowserDialog1 = new OpenFileDialog();
@@ -3524,20 +3542,24 @@ namespace WindowsFormsApp1
                         if (result == DialogResult.OK)
                         {
                             LocalPathFM = folderBrowserDialog1.FileName;
+                            Application.DoEvents();
+                            Thread.Sleep(1000);
+                            YmodemUploadFile(LocalPathFM); Thread.Sleep(100); Application.DoEvents();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please try again");
                         }
                     }
-                    Application.DoEvents();
-                    Thread.Sleep(1000);
-                    WriteToSingleSmartAir("sma", 0);
-                    YmodemUploadFile(LocalPathFM);
-                    Thread.Sleep(500);
+                    Again:
                     Application.DoEvents();
                     Thread.Sleep(2500);
                     Application.DoEvents();
                     if (FullTextSmartAir5units[0].Contains("SmartAir FW programming completed Successfully."))
                     {
-                        Application.DoEvents();
+                        Thread.Sleep(1500);Application.DoEvents();
                         WriteToSingleSmartAir("end", 0);
+                        Thread.Sleep(500); Application.DoEvents();
                         Stopwatch resetStopWatch = new Stopwatch();
                         resetStopWatch.Start();
                         TimeSpan ts = resetStopWatch.Elapsed;
@@ -3551,8 +3573,20 @@ namespace WindowsFormsApp1
                                 EndCondition = true;
                             }
                             Thread.Sleep(250);
+                            if ((ts.TotalSeconds > 10) && (FullTextSmartAir5units[0] == ""))
+                            {
+                                WriteToSingleSmartAir("end", 0);
+                                Thread.Sleep(500); Application.DoEvents();
+                            }
+
                         }
                     }
+                    else if(again)
+                    {
+                        again = false;
+                        goto Again;
+                    }
+                    again = true;
                     if (EndCondition)
                     {
                         WriteToSingleSmartAir("trg 1", 0);
@@ -3562,12 +3596,23 @@ namespace WindowsFormsApp1
                         MessageBox.Show("Please try again");
                         SMAbutton.Enabled = true;
                     }
-                        
+                    button9.Enabled = true;    
                     break;
 
                 case "V2":
                     if (BurnVersion.Text == "Firmware Default")
-                        LocalPathFM = @"C:\Users\User\Documents\Firmware\V2_FW\SmartAir_STM32.bin";
+                    {
+                        Thread.Sleep(1000);
+                        Application.DoEvents();
+                        MemoryStream Temp = new MemoryStream();
+                        Temp.Write(Resource1.SmartAir_STM32, 0, Resource1.SmartAir_STM32.Length);
+                        Temp.Position = 0;
+                        //YmodemUploadFile_DefaultFile(Temp);
+                        string SmaPath = path + "\\Firmware\\V2_FW\\SmartAir_STM32.bin";
+                        YmodemUploadFile(SmaPath);
+                        Thread.Sleep(500);
+                        Application.DoEvents();
+                    }
                     else if (BurnVersion.Text == "Manual selection firmware")
                     {
                         var folderBrowserDialog1 = new OpenFileDialog();
@@ -3575,15 +3620,18 @@ namespace WindowsFormsApp1
                         if (result == DialogResult.OK)
                         {
                             LocalPathFM = folderBrowserDialog1.FileName;
+                            Application.DoEvents();
+                            Thread.Sleep(1000);
+                            YmodemUploadFile(LocalPathFM);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please try again");
                         }
                     }
-                    Application.DoEvents();
-                    Thread.Sleep(1000);
-                    WriteToSingleSmartAir("sma", 0);
-                    YmodemUploadFile(LocalPathFM);
                     Thread.Sleep(500);
                     Application.DoEvents();
-                    Thread.Sleep(2500);
+                    Thread.Sleep(500);
                     Application.DoEvents();
                     if (FullTextSmartAir5units[0].Contains("SmartAir FW programming completed Successfully."))
                     {
@@ -3592,6 +3640,8 @@ namespace WindowsFormsApp1
                     else
                     {
                         MessageBox.Show("Please try again");
+                        SendToSMAChars("a");
+                        Thread.Sleep(500);Application.DoEvents();
                         SMAbutton.Enabled = true;
                     }
                     break;
@@ -3599,7 +3649,6 @@ namespace WindowsFormsApp1
             Thread.Sleep(500);
             Application.DoEvents();
         }
-
         private void ClearFlashScreen_Click(object sender, EventArgs e)
         {
             if (FlashTextBox is TextBox)
@@ -3607,7 +3656,6 @@ namespace WindowsFormsApp1
                 ((TextBox)FlashTextBox).Text = String.Empty;
             }
         }
-
         private void button9_Click(object sender, EventArgs e)
         {
             int TryCount = 0;
@@ -3619,13 +3667,13 @@ namespace WindowsFormsApp1
             {
                 WriteToSingleSmartAir("ee?", 0);
                 Application.DoEvents();
-                Thread.Sleep(3000);
+                Thread.Sleep(1200);
                 if (FullTextSmartAir5units[0].Contains("!System.....................:"))
                 {
                     FullTextSmartAir5units[0] = "";
                     Thread.Sleep(1500);
                     WriteToSingleSmartAir("trg 2", 0);
-                    Thread.Sleep(4000);
+                    Thread.Sleep(1500);
                     WriteToSingleSmartAir("fwu", 0);
                     Thread.Sleep(300);
                     Stopwatch resetStopWatch = new Stopwatch();
@@ -3657,7 +3705,7 @@ namespace WindowsFormsApp1
                 if (TryCount < 3)
                     WriteToSingleSmartAir("rst", 0);
                 Thread.Sleep(2500);
-                if (FullTextSmartAir5units[0].Contains("Bootloader ver"))
+                if (FullTextSmartAir5units[0].Contains("Bootloader ver")) 
                 {
                     SMAbutton.Enabled = true;
                     //pictureBox1.ErrorImage =  ;
@@ -3670,33 +3718,40 @@ namespace WindowsFormsApp1
             }
             else if (BurnSystem.Text == "V2")
             {
+                bool v2Again = true;
                 Thread.Sleep(1000);
                 Application.DoEvents();
+                AGAIN:
                 Thread.Sleep(500);
                 Application.DoEvents();
-                if (FullTextSmartAir5units[0].Contains("Boot loader ver"))
+                if (FullTextSmartAir5units[0].Contains("Boot loader ver") || FullTextSmartAir5units[0].Contains("Enter command"))
                 {
                     SMAbutton.Enabled = true;
-                    //SMAFlashStatuspictureBox.InitialImage.
+                    
+                }
+                else if (v2Again)
+                {
+                    SendToSMAChars("?");
+                    v2Again = false;
+                    goto AGAIN;
                 }
                 else
                 {
                     MessageBox.Show("Manual reset required");
                     MessageBox.Show("After manual reset, click OK to continue");
-                    Thread.Sleep(500);
+                    Thread.Sleep(5500);
                     Application.DoEvents();
                     goto ManReboot;
                 }
             }
         }
-
         private void BurnSystem_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-        public bool YmodemUploadFile(string path)
+        public bool YmodemUploadFile(string path)//string path
         {
-            Application.DoEvents();
+            //Application.DoEvents();
             /* control signals */
             const byte STX = 2;  // Start of TeXt 
             const byte EOT = 4;  // End Of Transmission
@@ -3710,6 +3765,7 @@ namespace WindowsFormsApp1
             /* THE PACKET: 1029 bytes */
             /* header: 3 bytes */
             // STX
+            int PacketNumber = 0;
             int packetNumber = 0;
             int invertedPacketNumber = 255;
             /* data: 1024 bytes */
@@ -3719,15 +3775,14 @@ namespace WindowsFormsApp1
 
             /* get the file */
             FileStream fileStream = new FileStream(@path, FileMode.Open, FileAccess.Read);
-
             try
             {
-                Application.DoEvents();
+                //Application.DoEvents();
                 /* send the initial packet with filename and filesize */
                 if (serialPort1.ReadByte() != C)
                 {
                     Console.WriteLine("Can't begin the transfer.");
-                    Application.DoEvents();
+                    //Application.DoEvents();
                     return false;
                 }
 
@@ -3740,12 +3795,15 @@ namespace WindowsFormsApp1
 
                 if (serialPort1.ReadByte() != C)
                     return false;
-                Application.DoEvents();
+                //Application.DoEvents();
                 /* send packets with a cycle until we send the last byte */
+                bool ACKstatus = false;
                 int fileReadCount;
+                int Cerr = 0;
+
                 do
                 {
-                    Application.DoEvents();
+                    ACKstatus = false;
                     /* if this is the last packet fill the remaining bytes with 0 */
                     fileReadCount = fileStream.Read(data, 0, dataSize);
                     if (fileReadCount == 0) break;
@@ -3756,7 +3814,11 @@ namespace WindowsFormsApp1
                     /* calculate packetNumber */
                     packetNumber++;
                     if (packetNumber > 255)
+                    {
+                        PacketNumber += packetNumber;
                         packetNumber -= 256;
+                    }
+                        
                     Console.WriteLine(packetNumber);
 
                     /* calculate invertedPacketNumber */
@@ -3767,23 +3829,44 @@ namespace WindowsFormsApp1
                     CRC = crc16Ccitt.ComputeChecksumBytes(data);
 
                     /* send the packet */
-                    sendYmodemPacket(STX, packetNumber, invertedPacketNumber, data, dataSize, CRC, crcSize);
 
+                    sendYmodemPacket(STX, packetNumber, invertedPacketNumber, data, dataSize, CRC, crcSize);
+                    Thread.Sleep(40);
+                    Stopwatch resetStopWatch1 = new Stopwatch();
+                    resetStopWatch1.Start();
+                    TimeSpan ts1 = resetStopWatch1.Elapsed;
                     /* wait for ACK */
-                    if (serialPort1.ReadByte() != ACK)
+                    while ((ts1.TotalSeconds <= 25) && !ACKstatus)
                     {
-                        Console.WriteLine("Couldn't send a packet.");
-                        return false;
+                        ts1 = resetStopWatch1.Elapsed;
+                        if (serialPort1.ReadByte() == ACK)
+                        {
+                            ACKstatus = true;
+                        }
+                        else if (ts1.Seconds > 22)
+                        {
+                            Cerr++;
+                            ts1 = resetStopWatch1.Elapsed;
+                        }
+                        if (Cerr == 3)
+                        {
+                            PacketNumber = PacketNumber + packetNumber;
+                            return false;
+                        }
+                            
                     }
                 } while (dataSize == fileReadCount);
-                Application.DoEvents();
+                //Application.DoEvents();
                 /* send EOT (tell the downloader we are finished) */
+                Thread.Sleep(500);
                 serialPort1.Write(new byte[] { EOT }, 0, 1);
                 /* send closing packet */
+                PacketNumber = PacketNumber+packetNumber;
                 packetNumber = 0;
                 invertedPacketNumber = 255;
                 data = new byte[dataSize];
                 CRC = new byte[crcSize];
+                Thread.Sleep(500);
                 sendYmodemClosingPacket(STX, packetNumber, invertedPacketNumber, data, dataSize, CRC, crcSize);
                 /* get ACK (downloader acknowledge the EOT) */
                 if (serialPort1.ReadByte() != ACK)
@@ -3798,6 +3881,12 @@ namespace WindowsFormsApp1
             }
             finally
             {
+                Thread.Sleep(500); Application.DoEvents();
+                double x = Math.Floor(Convert.ToDouble(fileStream.Length) / 1023)+1;
+                FlashTextBox.Text += "\n\r";
+                FlashTextBox.Text += "\r\n" + PacketNumber.ToString() + "/" + x.ToString() + " packets sent\n\r";
+                Application.DoEvents();
+                Thread.Sleep(3000);
                 Application.DoEvents();
                 fileStream.Close();
             }
@@ -3805,10 +3894,9 @@ namespace WindowsFormsApp1
             Console.WriteLine("File transfer is succesful");
             return true;
         }
-
         private void sendYmodemInitialPacket(byte STX, int packetNumber, int invertedPacketNumber, byte[] data, int dataSize, string path, FileStream fileStream, byte[] CRC, int crcSize)
         {
-            Application.DoEvents();
+            //Application.DoEvents();
             string fileName = System.IO.Path.GetFileName(path);
             string fileSize = fileStream.Length.ToString();
 
@@ -3819,7 +3907,7 @@ namespace WindowsFormsApp1
                 data[i] = (byte)fileName.ToCharArray()[i];
             }
             data[i] = 0;
-            Application.DoEvents();
+            //Application.DoEvents();
             /* add filesize to data */
             int j;
             for (j = 0; j < fileSize.Length && (fileSize.ToCharArray()[j] != 0); j++)
@@ -3833,15 +3921,187 @@ namespace WindowsFormsApp1
             {
                 data[k] = 0;
             }
-            Application.DoEvents();
+            //Application.DoEvents();
             /* calculate CRC */
             Crc16Ccitt crc16Ccitt = new Crc16Ccitt(InitialCrcValue.Zeros);
             CRC = crc16Ccitt.ComputeChecksumBytes(data);
-            Application.DoEvents();
+            //Application.DoEvents();
             /* send the packet */
             sendYmodemPacket(STX, packetNumber, invertedPacketNumber, data, dataSize, CRC, crcSize);
         }
+        public bool YmodemUploadFile_DefaultFile(MemoryStream fileStream)//string path
+        {
+            //Application.DoEvents();
+            /* control signals */
+            const byte STX = 2;  // Start of TeXt 
+            const byte EOT = 4;  // End Of Transmission
+            const byte ACK = 6;  // Positive ACknowledgement
+            const byte C = 67;   // capital letter C
 
+            /* sizes */
+            const int dataSize = 1024;
+            const int crcSize = 2;
+
+            /* THE PACKET: 1029 bytes */
+            /* header: 3 bytes */
+            // STX
+            int PacketNumber = 0;
+            int packetNumber = 0;
+            int invertedPacketNumber = 255;
+            /* data: 1024 bytes */
+            byte[] data = new byte[dataSize];
+            /* footer: 2 bytes */
+            byte[] CRC = new byte[crcSize];
+
+            /* get the file */
+            //FileStream fileStream = new FileStream(@path, FileMode.Open, FileAccess.Read);
+            //MemoryStream fileStream2 = new MemoryStream();
+            //Application.DoEvents();
+            try
+            {
+                
+                /* send the initial packet with filename and filesize */
+                if (serialPort1.ReadByte() != C)
+                {
+                    Console.WriteLine("Can't begin the transfer.");
+                    //Application.DoEvents();
+                    return false;
+                }
+                //Application.DoEvents();
+                sendYmodemInitialPacket_DefaultFile(STX, packetNumber, invertedPacketNumber, data, dataSize, path, fileStream, CRC, crcSize); //Application.DoEvents();
+                if (serialPort1.ReadByte() != ACK)
+                {
+                    Console.WriteLine("Can't send the initial packet.");
+                    return false;
+                }
+
+                if (serialPort1.ReadByte() != C)
+                    return false;
+                //Application.DoEvents();
+                /* send packets with a cycle until we send the last byte */
+                bool ACKstatus = false;
+                int fileReadCount;
+                int Cerr = 0;
+                do
+                {
+                    ACKstatus = false;
+                    //Application.DoEvents();
+                    /* if this is the last packet fill the remaining bytes with 0 */
+                    fileReadCount = fileStream.Read(data, 0, dataSize);
+                    if (fileReadCount == 0) break;
+                    if (fileReadCount != dataSize)
+                        for (int i = fileReadCount; i < dataSize; i++)
+                            data[i] = 0;
+
+                    /* calculate packetNumber */
+                    packetNumber++;
+                    //FlashTextBox.Text += packetNumber.ToString()+ "\n" ; Application.DoEvents();
+                    if (packetNumber > 255)
+                        packetNumber -= 256;
+                    Console.WriteLine(packetNumber);
+
+                    /* calculate invertedPacketNumber */
+                    invertedPacketNumber = 255 - packetNumber;
+
+                    /* calculate CRC */
+                    Crc16Ccitt crc16Ccitt = new Crc16Ccitt(InitialCrcValue.Zeros);
+                    CRC = crc16Ccitt.ComputeChecksumBytes(data);
+
+                    /* send the packet */
+                    sendYmodemPacket(STX, packetNumber, invertedPacketNumber, data, dataSize, CRC, crcSize);Thread.Sleep(20);
+                    //Application.DoEvents();
+                    /* wait for ACK */
+                    Stopwatch resetStopWatch1 = new Stopwatch();
+                    resetStopWatch1.Start();
+                    TimeSpan ts1 = resetStopWatch1.Elapsed;
+                    
+                    while ((ts1.TotalSeconds <= 25)&&!ACKstatus)
+                    {
+                        ts1 = resetStopWatch1.Elapsed;
+                        if (serialPort1.ReadByte() == ACK)
+                        {
+                            ACKstatus = true;
+                        }
+                        else if (ts1.Seconds > 23)
+                        {
+                            Cerr++;
+                            ts1 = resetStopWatch1.Elapsed;
+                        }
+                        if (Cerr == 3)
+                            return false;
+                    }
+                } while (dataSize == fileReadCount);
+                /* send EOT (tell the downloader we are finished) */
+                Thread.Sleep(500);
+                serialPort1.Write(new byte[] { EOT }, 0, 1);
+                /* send closing packet */
+                PacketNumber = packetNumber;
+                packetNumber = 0;
+                invertedPacketNumber = 255;
+                data = new byte[dataSize];
+                CRC = new byte[crcSize];
+                Thread.Sleep(500);
+                sendYmodemClosingPacket(STX, packetNumber, invertedPacketNumber, data, dataSize, CRC, crcSize);
+                /* get ACK (downloader acknowledge the EOT) */
+                if (serialPort1.ReadByte() != ACK)
+                {
+                    Console.WriteLine("Can't complete the transfer.");
+                    return false;
+                }
+            }
+            catch (TimeoutException)
+            {
+                throw new Exception("Eductor does not answering");
+            }
+            finally
+            {
+                Thread.Sleep(500);
+                Application.DoEvents();
+                double x = Math.Floor(Convert.ToDouble(fileStream.Length) / 1023)+1;
+                FlashTextBox.Text += "\n\r";
+                FlashTextBox.Text += "\r\n" + PacketNumber.ToString() + "/" + x.ToString() + " packets sent\n\r";
+                Thread.Sleep(3000);
+                Application.DoEvents();
+                fileStream.Close();
+            }
+            Console.WriteLine("File transfer is succesful");
+            return true;
+        }
+        private void sendYmodemInitialPacket_DefaultFile(byte STX, int packetNumber, int invertedPacketNumber, byte[] data, int dataSize, string path, MemoryStream fileStream, byte[] CRC, int crcSize)
+        {
+            //Application.DoEvents();
+            string fileName = System.IO.Path.GetFileName(path);
+            string fileSize = fileStream.Length.ToString();
+
+            /* add filename to data */
+            int i;
+            for (i = 0; i < fileName.Length && (fileName.ToCharArray()[i] != 0); i++)
+            {
+                data[i] = (byte)fileName.ToCharArray()[i];
+            }
+            data[i] = 0;
+            //Application.DoEvents();
+            /* add filesize to data */
+            int j;
+            for (j = 0; j < fileSize.Length && (fileSize.ToCharArray()[j] != 0); j++)
+            {
+                data[(i + 1) + j] = (byte)fileSize.ToCharArray()[j];
+            }
+            data[(i + 1) + j] = 0;
+
+            /* fill the remaining data bytes with 0 */
+            for (int k = ((i + 1) + j) + 1; k < dataSize; k++)
+            {
+                data[k] = 0;
+            }
+            //Application.DoEvents();
+            /* calculate CRC */
+            Crc16Ccitt crc16Ccitt = new Crc16Ccitt(InitialCrcValue.Zeros);
+            CRC = crc16Ccitt.ComputeChecksumBytes(data);
+            //Application.DoEvents();
+            /* send the packet */
+            sendYmodemPacket(STX, packetNumber, invertedPacketNumber, data, dataSize, CRC, crcSize);
+        }
         private void sendYmodemClosingPacket(byte STX, int packetNumber, int invertedPacketNumber, byte[] data, int dataSize, byte[] CRC, int crcSize)
         {
             /* calculate CRC */
@@ -3851,25 +4111,297 @@ namespace WindowsFormsApp1
             /* send the packet */
             sendYmodemPacket(STX, packetNumber, invertedPacketNumber, data, dataSize, CRC, crcSize);
         }
-
         private void sendYmodemPacket(byte STX, int packetNumber, int invertedPacketNumber, byte[] data, int dataSize, byte[] CRC, int crcSize)
         {
-            Application.DoEvents();
+            //Application.DoEvents();
             serialPort1.Write(new byte[] { STX }, 0, 1);
             serialPort1.Write(new byte[] { (byte)packetNumber }, 0, 1);
             serialPort1.Write(new byte[] { (byte)invertedPacketNumber }, 0, 1);
             serialPort1.Write(data, 0, dataSize);
             serialPort1.Write(CRC, 0, crcSize);
         }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
-
         private void progressBar7_Click(object sender, EventArgs e)
         {
 
         }
+        private void FlashSCUbutton_Click(object sender, EventArgs e)
+        {
+            Thread.Sleep(1000);
+            Application.DoEvents();
+            EndCondition = false;
+            string LocalPathFM = "";
+            FlashSCUbutton.Enabled = false;
+            FullTextSmartAir5units[0] = "";
+            SendToSMAChars("SCU");
+            //WriteToSingleSmartAir("sma", 0);
+            Thread.Sleep(3000);
+            Application.DoEvents();
+            //Thread.Sleep(1000);
+            switch (BurnVersion.Text)
+            {
+                case "Firmware Default":
+                    Thread.Sleep(1000);
+                    Application.DoEvents();
+                    /*MemoryStream Temp = new MemoryStream();
+                    Temp.Write(Resource1.ACU, 0, Resource1.ACU.Length);
+                    Temp.Position = 0;*/
+                    string SmaPath = path + "\\Firmware\\V2_FW\\ACU.bin";
+                    YmodemUploadFile(SmaPath);
+                    Thread.Sleep(500);
+                    Application.DoEvents();
+                    break;
+                case "Manual selection firmware":
+                    var folderBrowserDialog1 = new OpenFileDialog();
+                    DialogResult result = folderBrowserDialog1.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        LocalPathFM = folderBrowserDialog1.FileName;
+                        Application.DoEvents();
+                        Thread.Sleep(1000);
+                        YmodemUploadFile(LocalPathFM);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please try again");
+                    }
+                    break;
+            }
+            Stopwatch resetStopWatch1 = new Stopwatch();
+            resetStopWatch1.Start();
+            TimeSpan ts1 = resetStopWatch1.Elapsed;
+            FullTextSmartAir5units[0] = "";
+            while ((ts1.Minutes<2)&&!EndCondition)
+            {
+                Thread.Sleep(50);
+                Application.DoEvents();
+                if (FullTextSmartAir5units[0].Contains("SenseAir Modem ACU sertificate loaded"))
+                    EndCondition = true;
+                else if (FullTextSmartAir5units[0].Contains("CCC"))
+                    break;
+                ts1 = resetStopWatch1.Elapsed;
+            }
+            if (EndCondition)
+                CCUFlashbutton.Enabled = true;
+            else
+            {
+                FlashSCUbutton.Enabled = true;
+                MessageBox.Show("Please try again");
+                SendToSMAChars("a");
+            }
+            Thread.Sleep(500);
+            Application.DoEvents();
+
+        }
+        private void SendToSMAChars(string StringToSend)
+        {
+            serialPort1.Write(new byte[] { (byte)0x0A }, 0, 1);
+            foreach (char C in StringToSend)
+            {
+                byte hex = Convert.ToByte(C);
+                serialPort1.Write(new byte[] { hex }, 0, 1);
+            }
+            serialPort1.Write(new byte[] { (byte)0x0D }, 0, 1);
+        }
+        private void CCUFlashbutton_Click(object sender, EventArgs e)
+        {
+            Thread.Sleep(1000);
+            Application.DoEvents();
+            EndCondition = false;
+            string LocalPathFM = "";
+            //FlashSCUbutton.Enabled = false;
+            CCUFlashbutton.Enabled = false;
+            FullTextSmartAir5units[0] = "";
+            SendToSMAChars("CCU");
+            Thread.Sleep(3000);
+            Application.DoEvents();
+            switch (BurnVersion.Text)
+            {
+                case "Firmware Default":
+                    Thread.Sleep(1000);
+                    Application.DoEvents();
+                    /*MemoryStream Temp = new MemoryStream();
+                    Temp.Write(Resource1.CCU, 0, Resource1.CCU.Length);
+                    Temp.Position = 0;
+                    YmodemUploadFile_DefaultFile(Temp);
+                    */
+                    string SmaPath = path + "\\Firmware\\V2_FW\\CCU.bin";
+                    YmodemUploadFile(SmaPath);
+                    Thread.Sleep(500);
+                    Application.DoEvents();
+                    break;
+                case "Manual selection firmware":
+                    var folderBrowserDialog1 = new OpenFileDialog();
+                    DialogResult result = folderBrowserDialog1.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        LocalPathFM = folderBrowserDialog1.FileName;
+                        Application.DoEvents();
+                        Thread.Sleep(1000);
+                        YmodemUploadFile(LocalPathFM);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please try again");
+                    }
+                    break;
+            }
+            Stopwatch resetStopWatch1 = new Stopwatch();
+            resetStopWatch1.Start();
+            TimeSpan ts1 = resetStopWatch1.Elapsed;
+            FullTextSmartAir5units[0] = "";
+            while ((ts1.Minutes < 2) && !EndCondition)
+            {
+                Thread.Sleep(50);
+                Application.DoEvents();
+                if (FullTextSmartAir5units[0].Contains("SenseAir Modem CCU sertificate loaded"))
+                    EndCondition = true;
+                else if (FullTextSmartAir5units[0].Contains("CCC"))
+                    break;
+                ts1 = resetStopWatch1.Elapsed;
+            }
+            if (EndCondition)
+                SenFlashbutton.Enabled = true;
+            else
+            {
+                CCUFlashbutton.Enabled = true;
+                MessageBox.Show("Please try again\nManual reset required");
+                MessageBox.Show("After manual reset, click OK to continue");
+                Thread.Sleep(5500);
+                Application.DoEvents();
+                //SendToSMAChars("a");
+            }
+            Thread.Sleep(500);
+            Application.DoEvents();
+
+        }
+        private void SenFlashbutton_Click(object sender, EventArgs e)
+        {
+            Thread.Sleep(1000);
+            Application.DoEvents();
+            EndCondition = false;
+            string LocalPathFM = "";
+            SenFlashbutton.Enabled = false;
+            FullTextSmartAir5units[0] = "";
+            SendToSMAChars("SEN");
+            Thread.Sleep(3000);
+            Application.DoEvents();
+            switch (BurnVersion.Text)
+            {
+                case "Firmware Default":
+                    Thread.Sleep(1000);
+                    Application.DoEvents();
+                    /*MemoryStream Temp = new MemoryStream();
+                    Temp.Write(Resource1.SenseAirNew, 0, Resource1.SenseAirNew.Length);
+                    Temp.Position = 0;
+                    YmodemUploadFile_DefaultFile(Temp);*/
+
+                    string SmaPath = path + "\\Firmware\\V2_FW\\SenseAirNew.bin";
+                    YmodemUploadFile(SmaPath);
+                    Thread.Sleep(500);
+                    Application.DoEvents();
+                    break;
+                case "Manual selection firmware":
+                    var folderBrowserDialog1 = new OpenFileDialog();
+                    DialogResult result = folderBrowserDialog1.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        LocalPathFM = folderBrowserDialog1.FileName;
+                        Application.DoEvents();
+                        Thread.Sleep(1000);
+                        YmodemUploadFile(LocalPathFM);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please try again");
+                    }
+                    break;
+            }
+            Stopwatch resetStopWatch1 = new Stopwatch();
+            resetStopWatch1.Start();
+            TimeSpan ts1 = resetStopWatch1.Elapsed;
+            int SMAstrLength = 0, TH = 0;
+            FullTextSmartAir5units[0] = "";
+            while ((ts1.Minutes < 3.5) && !EndCondition)
+            {
+                ts1 = resetStopWatch1.Elapsed;
+                Thread.Sleep(50);
+                Application.DoEvents();
+                if (FullTextSmartAir5units[0].Contains("SenseAir SW 2.34 Modem SW 02.27.01 Started"))
+                    EndCondition = true;
+                if (Convert.ToInt32(ts1.TotalSeconds)%5==0)
+                {
+                    if ((SMAstrLength == FullTextSmartAir5units[0].Length)||(FullTextSmartAir5units[0].Contains("C")))
+                    {
+                        TH = TH + Convert.ToInt32(ts1.TotalSeconds);
+                    }
+                    else
+                    {
+                        SMAstrLength = FullTextSmartAir5units[0].Length;
+                        TH = 0;
+                    }
+                    if (TH > 40)
+                        break;
+                }
+            }
+            if (EndCondition)
+                EndButton.Enabled = true;
+            else
+            {
+                SenFlashbutton.Enabled = true;
+                MessageBox.Show("Please try again\nManual reset required");
+                MessageBox.Show("After manual reset, click OK to continue");
+                Thread.Sleep(5500);
+                Application.DoEvents();
+            }
+            Thread.Sleep(500);
+            Application.DoEvents();
+
+        }
+        private void EndButton_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+            bool TimeOut = false, EndCondition = false;
+            Application.DoEvents();
+            FullTextSmartAir5units[0] = "";
+            SendToSMAChars("end");
+            Stopwatch resetStopWatch1 = new Stopwatch();
+            resetStopWatch1.Start();
+            TimeSpan ts1 = resetStopWatch1.Elapsed;
+            while ((!EndCondition)&&(!TimeOut))
+            {
+                Application.DoEvents();
+                Thread.Sleep(500);
+                ts1 = resetStopWatch1.Elapsed;
+                if (FullTextSmartAir5units[0].Contains("GO."))
+                {
+                    EndCondition = true;
+                    FullTextSmartAir5units[0] = "";
+                    MessageBox.Show("Manual reset required");
+                }
+                else if (count<3)
+                {
+                    SendToSMAChars("end");
+                    count++;
+                    Application.DoEvents();
+                }
+                else if (ts1.Seconds >= 30)
+                    TimeOut = true;
+            }
+            if (EndCondition)
+            {
+                if(FullTextSmartAir5units[0].Contains("!Application................: Start"))
+                    MessageBox.Show("The firmware was successfully burned\nGo to the \"Manual Test panel\" for further testing");
+                EndButton.Enabled = false;
+            }
+        }
+        private void button10_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(path);
+        }
     }
 }
+
