@@ -272,6 +272,30 @@
   <metadata name="serialPort6.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>104, 56</value>
   </metadata>
+  <data name="RefreshStatusParams.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        /9j/4AAQSkZJRgABAQEASABIAAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAAAAAAD/2wBD
+        AAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0M
+        DgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM
+        DAwMDAwMDAwMDAwMDAz/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQF
+        BgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAk
+        M2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWG
+        h4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx
+        8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQA
+        AQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5
+        OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmq
+        srO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3
+        j/guT/wU48VeOf2lvDP7Pv7NDfEi8+M3hXU/tWoap4Q1SaOKN2ty0mmPaxho70LGyTTPKBHbGJRkt5yx
+        /Qn/AAS91z4oft0/8EqdB174qePtcXx94yudRutF8TWVnBpmqeHVhuZbaznVLeOJGZWt3lZZFKTxSNHM
+        skTSAeYf8EMfgba/D39qb9s/xH4it1/4WdD8UL3R7uedR9oh06WaW/imjJAKx3bTCbIIDrDCxxsDDzr9
+        u7/g4Rs/gLrvxy+Efgfwhcf8J54f8Qt4a8H3+nRItlC0lvEt5dSopLNeQ6kbry444wJCYNwVkJUA+zP+
+        CTP7bOof8FAv2L9D8aa1DZ2PjLS7qfw/4pt7M7LVdTtiA7xAyIRHLG8MwXnZ52wMQgwV5j/wQv8A2bNY
+        /YF/YE0nw54mj/sfxT4p1K48Tatp1xcRRvp0sqxQRwNvuYT5iQW0CyABtkolQtuRlUoA+lPF3wU0Twx8
+        ZZPizpC3WkeLb6Cy0DWzaSBLbxLZ+aRbrexkESSWzSO0E6lJo9zJvMTNGfDfEP8AwSE+COjftDL8ZPDG
+        i654J+I2i6vc+JH1bRdauVGo3TteSTiaCZpIQs/lOknlJGxW5m2sreW0ZRQB714i8STeBbtbW0VmjZph
+        xcz2/wDqp5bdflhkjX7sK9vl+6u2NURSiigD/9k=
+</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>99</value>
   </metadata>

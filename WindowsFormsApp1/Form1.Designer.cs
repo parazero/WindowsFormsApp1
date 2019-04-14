@@ -32,6 +32,7 @@
             System.Windows.Forms.TabControl aa;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.PathSource = new System.Windows.Forms.Button();
             this.EnableServoTest = new System.Windows.Forms.CheckBox();
             this.ServoTest = new System.Windows.Forms.Button();
             this.CancelImu1 = new System.Windows.Forms.Button();
@@ -266,6 +267,7 @@
             this.ClearFlashScreen = new System.Windows.Forms.Button();
             this.FlashTextBox = new System.Windows.Forms.TextBox();
             this.FlashBox = new System.Windows.Forms.GroupBox();
+            this.EndButton = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.SMAbutton = new System.Windows.Forms.Button();
             this.FlashSCUbutton = new System.Windows.Forms.Button();
@@ -294,8 +296,57 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.serialPort6 = new System.IO.Ports.SerialPort(this.components);
-            this.EndButton = new System.Windows.Forms.Button();
-            this.PathSource = new System.Windows.Forms.Button();
+            this.ParamsStatus = new System.Windows.Forms.GroupBox();
+            this.StatusParamsBar = new System.Windows.Forms.ProgressBar();
+            this.GroupBoxTriggersValue = new System.Windows.Forms.GroupBox();
+            this.HeightGroupBox = new System.Windows.Forms.GroupBox();
+            this.HGTLabel = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.HGT = new System.Windows.Forms.TextBox();
+            this.YawGroupBox = new System.Windows.Forms.GroupBox();
+            this.YRLLabel = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.YRL = new System.Windows.Forms.TextBox();
+            this.FFLGroupBox = new System.Windows.Forms.GroupBox();
+            this.FFLLabel = new System.Windows.Forms.Label();
+            this.FFL = new System.Windows.Forms.TextBox();
+            this.DHTLabel = new System.Windows.Forms.Label();
+            this.HTCLabel = new System.Windows.Forms.Label();
+            this.HTC = new System.Windows.Forms.TextBox();
+            this.DHT = new System.Windows.Forms.TextBox();
+            this.FFCLabel = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.FFC = new System.Windows.Forms.TextBox();
+            this.AngularGroupBox1 = new System.Windows.Forms.GroupBox();
+            this.ATC1Label = new System.Windows.Forms.Label();
+            this.ATTSLabel = new System.Windows.Forms.Label();
+            this.ATTS = new System.Windows.Forms.TextBox();
+            this.ATC1 = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.ATTR = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.ATTP = new System.Windows.Forms.TextBox();
+            this.AngularGroupBox2 = new System.Windows.Forms.GroupBox();
+            this.ATC2Label = new System.Windows.Forms.Label();
+            this.ATRLLabel = new System.Windows.Forms.Label();
+            this.ATC2 = new System.Windows.Forms.TextBox();
+            this.ATRL = new System.Windows.Forms.TextBox();
+            this.ATRRLabel = new System.Windows.Forms.Label();
+            this.ATRPLabel = new System.Windows.Forms.Label();
+            this.ATRR = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.ATRP = new System.Windows.Forms.TextBox();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.ArmModeGroupBox = new System.Windows.Forms.GroupBox();
+            this.CheckBoxArmModeList = new System.Windows.Forms.CheckedListBox();
+            this.DisarmModeGroupBox = new System.Windows.Forms.GroupBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.DISEValue = new System.Windows.Forms.TextBox();
+            this.DISETrackBar = new System.Windows.Forms.TrackBar();
+            this.RefreshStatusParams = new System.Windows.Forms.Button();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.CheckBoxEnableList = new System.Windows.Forms.CheckedListBox();
             aa = new System.Windows.Forms.TabControl();
             aa.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -329,6 +380,18 @@
             this.FlashBox.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox14.SuspendLayout();
+            this.ParamsStatus.SuspendLayout();
+            this.GroupBoxTriggersValue.SuspendLayout();
+            this.HeightGroupBox.SuspendLayout();
+            this.YawGroupBox.SuspendLayout();
+            this.FFLGroupBox.SuspendLayout();
+            this.AngularGroupBox1.SuspendLayout();
+            this.AngularGroupBox2.SuspendLayout();
+            this.groupBox17.SuspendLayout();
+            this.ArmModeGroupBox.SuspendLayout();
+            this.DisarmModeGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DISETrackBar)).BeginInit();
+            this.groupBox16.SuspendLayout();
             this.SuspendLayout();
             // 
             // aa
@@ -378,6 +441,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "1st";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // PathSource
+            // 
+            this.PathSource.Location = new System.Drawing.Point(278, 15);
+            this.PathSource.Name = "PathSource";
+            this.PathSource.Size = new System.Drawing.Size(122, 23);
+            this.PathSource.TabIndex = 61;
+            this.PathSource.Text = "Path Source Folder";
+            this.PathSource.UseVisualStyleBackColor = true;
+            this.PathSource.Click += new System.EventHandler(this.button10_Click);
             // 
             // EnableServoTest
             // 
@@ -3285,6 +3358,17 @@
             this.FlashBox.TabStop = false;
             this.FlashBox.Text = "Flash Box";
             // 
+            // EndButton
+            // 
+            this.EndButton.Enabled = false;
+            this.EndButton.Location = new System.Drawing.Point(5, 219);
+            this.EndButton.Name = "EndButton";
+            this.EndButton.Size = new System.Drawing.Size(128, 28);
+            this.EndButton.TabIndex = 67;
+            this.EndButton.Text = "End";
+            this.EndButton.UseVisualStyleBackColor = true;
+            this.EndButton.Click += new System.EventHandler(this.EndButton_Click);
+            // 
             // button9
             // 
             this.button9.Enabled = false;
@@ -3502,6 +3586,7 @@
             // 
             // BurnSystem
             // 
+            this.BurnSystem.AccessibleName = "";
             this.BurnSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BurnSystem.FormattingEnabled = true;
             this.BurnSystem.Items.AddRange(new object[] {
@@ -3546,32 +3631,613 @@
             // 
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
-            // EndButton
+            // ParamsStatus
             // 
-            this.EndButton.Enabled = false;
-            this.EndButton.Location = new System.Drawing.Point(5, 219);
-            this.EndButton.Name = "EndButton";
-            this.EndButton.Size = new System.Drawing.Size(128, 28);
-            this.EndButton.TabIndex = 67;
-            this.EndButton.Text = "End";
-            this.EndButton.UseVisualStyleBackColor = true;
-            this.EndButton.Click += new System.EventHandler(this.EndButton_Click);
+            this.ParamsStatus.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ParamsStatus.Controls.Add(this.StatusParamsBar);
+            this.ParamsStatus.Controls.Add(this.GroupBoxTriggersValue);
+            this.ParamsStatus.Controls.Add(this.groupBox17);
+            this.ParamsStatus.Controls.Add(this.RefreshStatusParams);
+            this.ParamsStatus.Controls.Add(this.groupBox16);
+            this.ParamsStatus.Enabled = false;
+            this.ParamsStatus.Location = new System.Drawing.Point(890, 24);
+            this.ParamsStatus.Name = "ParamsStatus";
+            this.ParamsStatus.Size = new System.Drawing.Size(357, 615);
+            this.ParamsStatus.TabIndex = 12;
+            this.ParamsStatus.TabStop = false;
+            this.ParamsStatus.Text = "Parameters Status";
             // 
-            // PathSource
+            // StatusParamsBar
             // 
-            this.PathSource.Location = new System.Drawing.Point(278, 15);
-            this.PathSource.Name = "PathSource";
-            this.PathSource.Size = new System.Drawing.Size(122, 23);
-            this.PathSource.TabIndex = 61;
-            this.PathSource.Text = "Path Source Folder";
-            this.PathSource.UseVisualStyleBackColor = true;
-            this.PathSource.Click += new System.EventHandler(this.button10_Click);
+            this.StatusParamsBar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.StatusParamsBar.Location = new System.Drawing.Point(5, 13);
+            this.StatusParamsBar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.StatusParamsBar.Minimum = 1;
+            this.StatusParamsBar.Name = "StatusParamsBar";
+            this.StatusParamsBar.Size = new System.Drawing.Size(310, 26);
+            this.StatusParamsBar.TabIndex = 46;
+            this.StatusParamsBar.Value = 1;
+            this.StatusParamsBar.Visible = false;
+            // 
+            // GroupBoxTriggersValue
+            // 
+            this.GroupBoxTriggersValue.BackColor = System.Drawing.Color.YellowGreen;
+            this.GroupBoxTriggersValue.Controls.Add(this.HeightGroupBox);
+            this.GroupBoxTriggersValue.Controls.Add(this.YawGroupBox);
+            this.GroupBoxTriggersValue.Controls.Add(this.FFLGroupBox);
+            this.GroupBoxTriggersValue.Controls.Add(this.AngularGroupBox1);
+            this.GroupBoxTriggersValue.Controls.Add(this.AngularGroupBox2);
+            this.GroupBoxTriggersValue.Location = new System.Drawing.Point(3, 230);
+            this.GroupBoxTriggersValue.Name = "GroupBoxTriggersValue";
+            this.GroupBoxTriggersValue.Size = new System.Drawing.Size(345, 284);
+            this.GroupBoxTriggersValue.TabIndex = 45;
+            this.GroupBoxTriggersValue.TabStop = false;
+            this.GroupBoxTriggersValue.Text = "Triggers Value";
+            // 
+            // HeightGroupBox
+            // 
+            this.HeightGroupBox.Controls.Add(this.HGTLabel);
+            this.HeightGroupBox.Controls.Add(this.label40);
+            this.HeightGroupBox.Controls.Add(this.HGT);
+            this.HeightGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.HeightGroupBox.Location = new System.Drawing.Point(175, 221);
+            this.HeightGroupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.HeightGroupBox.Name = "HeightGroupBox";
+            this.HeightGroupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.HeightGroupBox.Size = new System.Drawing.Size(164, 54);
+            this.HeightGroupBox.TabIndex = 14;
+            this.HeightGroupBox.TabStop = false;
+            this.HeightGroupBox.Text = "Height trigger";
+            this.HeightGroupBox.Visible = false;
+            // 
+            // HGTLabel
+            // 
+            this.HGTLabel.AutoSize = true;
+            this.HGTLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.HGTLabel.Location = new System.Drawing.Point(8, 23);
+            this.HGTLabel.Name = "HGTLabel";
+            this.HGTLabel.Size = new System.Drawing.Size(67, 15);
+            this.HGTLabel.TabIndex = 3;
+            this.HGTLabel.Text = "Height Lim";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label40.Location = new System.Drawing.Point(5, 25);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(0, 15);
+            this.label40.TabIndex = 1;
+            // 
+            // HGT
+            // 
+            this.HGT.CausesValidation = false;
+            this.HGT.Location = new System.Drawing.Point(97, 21);
+            this.HGT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.HGT.Multiline = true;
+            this.HGT.Name = "HGT";
+            this.HGT.Size = new System.Drawing.Size(62, 21);
+            this.HGT.TabIndex = 0;
+            this.HGT.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HGT_KeyDown);
+            // 
+            // YawGroupBox
+            // 
+            this.YawGroupBox.Controls.Add(this.YRLLabel);
+            this.YawGroupBox.Controls.Add(this.label44);
+            this.YawGroupBox.Controls.Add(this.YRL);
+            this.YawGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.YawGroupBox.Location = new System.Drawing.Point(6, 221);
+            this.YawGroupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.YawGroupBox.Name = "YawGroupBox";
+            this.YawGroupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.YawGroupBox.Size = new System.Drawing.Size(164, 54);
+            this.YawGroupBox.TabIndex = 13;
+            this.YawGroupBox.TabStop = false;
+            this.YawGroupBox.Text = "Angular Speed";
+            this.YawGroupBox.Visible = false;
+            // 
+            // YRLLabel
+            // 
+            this.YRLLabel.AutoSize = true;
+            this.YRLLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.YRLLabel.Location = new System.Drawing.Point(4, 23);
+            this.YRLLabel.Name = "YRLLabel";
+            this.YRLLabel.Size = new System.Drawing.Size(96, 15);
+            this.YRLLabel.TabIndex = 3;
+            this.YRLLabel.Text = "Ang. Speed Yaw";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label44.Location = new System.Drawing.Point(5, 25);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(0, 15);
+            this.label44.TabIndex = 1;
+            // 
+            // YRL
+            // 
+            this.YRL.CausesValidation = false;
+            this.YRL.Location = new System.Drawing.Point(101, 21);
+            this.YRL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.YRL.Multiline = true;
+            this.YRL.Name = "YRL";
+            this.YRL.Size = new System.Drawing.Size(58, 21);
+            this.YRL.TabIndex = 0;
+            this.YRL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.YRL_KeyDown);
+            // 
+            // FFLGroupBox
+            // 
+            this.FFLGroupBox.Controls.Add(this.FFLLabel);
+            this.FFLGroupBox.Controls.Add(this.FFL);
+            this.FFLGroupBox.Controls.Add(this.DHTLabel);
+            this.FFLGroupBox.Controls.Add(this.HTCLabel);
+            this.FFLGroupBox.Controls.Add(this.HTC);
+            this.FFLGroupBox.Controls.Add(this.DHT);
+            this.FFLGroupBox.Controls.Add(this.FFCLabel);
+            this.FFLGroupBox.Controls.Add(this.label43);
+            this.FFLGroupBox.Controls.Add(this.FFC);
+            this.FFLGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.FFLGroupBox.Location = new System.Drawing.Point(6, 147);
+            this.FFLGroupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FFLGroupBox.Name = "FFLGroupBox";
+            this.FFLGroupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FFLGroupBox.Size = new System.Drawing.Size(333, 72);
+            this.FFLGroupBox.TabIndex = 11;
+            this.FFLGroupBox.TabStop = false;
+            this.FFLGroupBox.Text = "Free Fall";
+            this.FFLGroupBox.Visible = false;
+            // 
+            // FFLLabel
+            // 
+            this.FFLLabel.AutoSize = true;
+            this.FFLLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.FFLLabel.Location = new System.Drawing.Point(8, 46);
+            this.FFLLabel.Name = "FFLLabel";
+            this.FFLLabel.Size = new System.Drawing.Size(92, 15);
+            this.FFLLabel.TabIndex = 12;
+            this.FFLLabel.Text = "Limit Threshold";
+            // 
+            // FFL
+            // 
+            this.FFL.CausesValidation = false;
+            this.FFL.Location = new System.Drawing.Point(106, 44);
+            this.FFL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FFL.Multiline = true;
+            this.FFL.Name = "FFL";
+            this.FFL.Size = new System.Drawing.Size(58, 21);
+            this.FFL.TabIndex = 11;
+            this.FFL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FFL_KeyDown);
+            // 
+            // DHTLabel
+            // 
+            this.DHTLabel.AutoSize = true;
+            this.DHTLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.DHTLabel.Location = new System.Drawing.Point(168, 47);
+            this.DHTLabel.Name = "DHTLabel";
+            this.DHTLabel.Size = new System.Drawing.Size(97, 15);
+            this.DHTLabel.TabIndex = 10;
+            this.DHTLabel.Text = "Delta Height TH ";
+            // 
+            // HTCLabel
+            // 
+            this.HTCLabel.AutoSize = true;
+            this.HTCLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.HTCLabel.Location = new System.Drawing.Point(170, 23);
+            this.HTCLabel.Name = "HTCLabel";
+            this.HTCLabel.Size = new System.Drawing.Size(91, 15);
+            this.HTCLabel.TabIndex = 8;
+            this.HTCLabel.Text = "Height Test Cyc";
+            // 
+            // HTC
+            // 
+            this.HTC.CausesValidation = false;
+            this.HTC.Location = new System.Drawing.Point(266, 21);
+            this.HTC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.HTC.Multiline = true;
+            this.HTC.Name = "HTC";
+            this.HTC.Size = new System.Drawing.Size(62, 21);
+            this.HTC.TabIndex = 7;
+            this.HTC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HTC_KeyDown);
+            // 
+            // DHT
+            // 
+            this.DHT.CausesValidation = false;
+            this.DHT.Location = new System.Drawing.Point(266, 45);
+            this.DHT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.DHT.Multiline = true;
+            this.DHT.Name = "DHT";
+            this.DHT.Size = new System.Drawing.Size(62, 21);
+            this.DHT.TabIndex = 9;
+            this.DHT.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DHT_KeyDown);
+            // 
+            // FFCLabel
+            // 
+            this.FFCLabel.AutoSize = true;
+            this.FFCLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.FFCLabel.Location = new System.Drawing.Point(8, 22);
+            this.FFCLabel.Name = "FFCLabel";
+            this.FFCLabel.Size = new System.Drawing.Size(67, 15);
+            this.FFCLabel.TabIndex = 3;
+            this.FFCLabel.Text = "Count [mS]";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label43.Location = new System.Drawing.Point(5, 25);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(0, 15);
+            this.label43.TabIndex = 1;
+            // 
+            // FFC
+            // 
+            this.FFC.CausesValidation = false;
+            this.FFC.Location = new System.Drawing.Point(106, 20);
+            this.FFC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FFC.Multiline = true;
+            this.FFC.Name = "FFC";
+            this.FFC.Size = new System.Drawing.Size(58, 21);
+            this.FFC.TabIndex = 0;
+            this.FFC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FFC_KeyDown);
+            // 
+            // AngularGroupBox1
+            // 
+            this.AngularGroupBox1.Controls.Add(this.ATC1Label);
+            this.AngularGroupBox1.Controls.Add(this.ATTSLabel);
+            this.AngularGroupBox1.Controls.Add(this.ATTS);
+            this.AngularGroupBox1.Controls.Add(this.ATC1);
+            this.AngularGroupBox1.Controls.Add(this.label32);
+            this.AngularGroupBox1.Controls.Add(this.label33);
+            this.AngularGroupBox1.Controls.Add(this.ATTR);
+            this.AngularGroupBox1.Controls.Add(this.label35);
+            this.AngularGroupBox1.Controls.Add(this.ATTP);
+            this.AngularGroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.AngularGroupBox1.Location = new System.Drawing.Point(6, 20);
+            this.AngularGroupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.AngularGroupBox1.Name = "AngularGroupBox1";
+            this.AngularGroupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.AngularGroupBox1.Size = new System.Drawing.Size(153, 126);
+            this.AngularGroupBox1.TabIndex = 9;
+            this.AngularGroupBox1.TabStop = false;
+            this.AngularGroupBox1.Text = "Angular I";
+            this.AngularGroupBox1.Visible = false;
+            // 
+            // ATC1Label
+            // 
+            this.ATC1Label.AutoSize = true;
+            this.ATC1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.ATC1Label.Location = new System.Drawing.Point(4, 92);
+            this.ATC1Label.Name = "ATC1Label";
+            this.ATC1Label.Size = new System.Drawing.Size(73, 15);
+            this.ATC1Label.TabIndex = 10;
+            this.ATC1Label.Text = "AngTest Cyc";
+            // 
+            // ATTSLabel
+            // 
+            this.ATTSLabel.AutoSize = true;
+            this.ATTSLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.ATTSLabel.Location = new System.Drawing.Point(4, 68);
+            this.ATTSLabel.Name = "ATTSLabel";
+            this.ATTSLabel.Size = new System.Drawing.Size(70, 15);
+            this.ATTSLabel.TabIndex = 8;
+            this.ATTSLabel.Text = "Ang. Speed";
+            // 
+            // ATTS
+            // 
+            this.ATTS.CausesValidation = false;
+            this.ATTS.Location = new System.Drawing.Point(79, 66);
+            this.ATTS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ATTS.Multiline = true;
+            this.ATTS.Name = "ATTS";
+            this.ATTS.Size = new System.Drawing.Size(61, 21);
+            this.ATTS.TabIndex = 7;
+            this.ATTS.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ATTS_KeyDown);
+            // 
+            // ATC1
+            // 
+            this.ATC1.CausesValidation = false;
+            this.ATC1.Location = new System.Drawing.Point(79, 89);
+            this.ATC1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ATC1.Multiline = true;
+            this.ATC1.Name = "ATC1";
+            this.ATC1.Size = new System.Drawing.Size(61, 21);
+            this.ATC1.TabIndex = 9;
+            this.ATC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ATC1_KeyDown);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label32.Location = new System.Drawing.Point(8, 45);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(29, 15);
+            this.label32.TabIndex = 6;
+            this.label32.Text = "Roll";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label33.Location = new System.Drawing.Point(8, 22);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(34, 15);
+            this.label33.TabIndex = 3;
+            this.label33.Text = "Pitch";
+            // 
+            // ATTR
+            // 
+            this.ATTR.CausesValidation = false;
+            this.ATTR.Location = new System.Drawing.Point(79, 43);
+            this.ATTR.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ATTR.Multiline = true;
+            this.ATTR.Name = "ATTR";
+            this.ATTR.Size = new System.Drawing.Size(61, 21);
+            this.ATTR.TabIndex = 5;
+            this.ATTR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ATTR_KeyDown);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label35.Location = new System.Drawing.Point(5, 25);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(0, 15);
+            this.label35.TabIndex = 1;
+            // 
+            // ATTP
+            // 
+            this.ATTP.CausesValidation = false;
+            this.ATTP.Location = new System.Drawing.Point(79, 20);
+            this.ATTP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ATTP.Multiline = true;
+            this.ATTP.Name = "ATTP";
+            this.ATTP.Size = new System.Drawing.Size(61, 21);
+            this.ATTP.TabIndex = 0;
+            this.ATTP.TextChanged += new System.EventHandler(this.ATTP_TextChanged);
+            this.ATTP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ATTP_KeyDown);
+            // 
+            // AngularGroupBox2
+            // 
+            this.AngularGroupBox2.Controls.Add(this.ATC2Label);
+            this.AngularGroupBox2.Controls.Add(this.ATRLLabel);
+            this.AngularGroupBox2.Controls.Add(this.ATC2);
+            this.AngularGroupBox2.Controls.Add(this.ATRL);
+            this.AngularGroupBox2.Controls.Add(this.ATRRLabel);
+            this.AngularGroupBox2.Controls.Add(this.ATRPLabel);
+            this.AngularGroupBox2.Controls.Add(this.ATRR);
+            this.AngularGroupBox2.Controls.Add(this.label28);
+            this.AngularGroupBox2.Controls.Add(this.ATRP);
+            this.AngularGroupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.AngularGroupBox2.Location = new System.Drawing.Point(186, 20);
+            this.AngularGroupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.AngularGroupBox2.Name = "AngularGroupBox2";
+            this.AngularGroupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.AngularGroupBox2.Size = new System.Drawing.Size(153, 126);
+            this.AngularGroupBox2.TabIndex = 5;
+            this.AngularGroupBox2.TabStop = false;
+            this.AngularGroupBox2.Text = "Angular II";
+            this.AngularGroupBox2.Visible = false;
+            // 
+            // ATC2Label
+            // 
+            this.ATC2Label.AutoSize = true;
+            this.ATC2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.ATC2Label.Location = new System.Drawing.Point(5, 92);
+            this.ATC2Label.Name = "ATC2Label";
+            this.ATC2Label.Size = new System.Drawing.Size(73, 15);
+            this.ATC2Label.TabIndex = 12;
+            this.ATC2Label.Text = "AngTest Cyc";
+            // 
+            // ATRLLabel
+            // 
+            this.ATRLLabel.AutoSize = true;
+            this.ATRLLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.ATRLLabel.Location = new System.Drawing.Point(4, 68);
+            this.ATRLLabel.Name = "ATRLLabel";
+            this.ATRLLabel.Size = new System.Drawing.Size(70, 15);
+            this.ATRLLabel.TabIndex = 8;
+            this.ATRLLabel.Text = "Ang. Speed";
+            // 
+            // ATC2
+            // 
+            this.ATC2.CausesValidation = false;
+            this.ATC2.Location = new System.Drawing.Point(80, 89);
+            this.ATC2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ATC2.Multiline = true;
+            this.ATC2.Name = "ATC2";
+            this.ATC2.Size = new System.Drawing.Size(61, 21);
+            this.ATC2.TabIndex = 11;
+            this.ATC2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ATC2_KeyDown);
+            // 
+            // ATRL
+            // 
+            this.ATRL.CausesValidation = false;
+            this.ATRL.Location = new System.Drawing.Point(80, 66);
+            this.ATRL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ATRL.Multiline = true;
+            this.ATRL.Name = "ATRL";
+            this.ATRL.Size = new System.Drawing.Size(61, 21);
+            this.ATRL.TabIndex = 7;
+            this.ATRL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ATRL_KeyDown);
+            // 
+            // ATRRLabel
+            // 
+            this.ATRRLabel.AutoSize = true;
+            this.ATRRLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.ATRRLabel.Location = new System.Drawing.Point(8, 45);
+            this.ATRRLabel.Name = "ATRRLabel";
+            this.ATRRLabel.Size = new System.Drawing.Size(29, 15);
+            this.ATRRLabel.TabIndex = 6;
+            this.ATRRLabel.Text = "Roll";
+            // 
+            // ATRPLabel
+            // 
+            this.ATRPLabel.AutoSize = true;
+            this.ATRPLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.ATRPLabel.Location = new System.Drawing.Point(8, 22);
+            this.ATRPLabel.Name = "ATRPLabel";
+            this.ATRPLabel.Size = new System.Drawing.Size(34, 15);
+            this.ATRPLabel.TabIndex = 3;
+            this.ATRPLabel.Text = "Pitch";
+            // 
+            // ATRR
+            // 
+            this.ATRR.CausesValidation = false;
+            this.ATRR.Location = new System.Drawing.Point(80, 43);
+            this.ATRR.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ATRR.Multiline = true;
+            this.ATRR.Name = "ATRR";
+            this.ATRR.Size = new System.Drawing.Size(61, 21);
+            this.ATRR.TabIndex = 5;
+            this.ATRR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ATRR_KeyDown);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label28.Location = new System.Drawing.Point(5, 25);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(0, 15);
+            this.label28.TabIndex = 1;
+            // 
+            // ATRP
+            // 
+            this.ATRP.CausesValidation = false;
+            this.ATRP.Location = new System.Drawing.Point(80, 20);
+            this.ATRP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ATRP.Multiline = true;
+            this.ATRP.Name = "ATRP";
+            this.ATRP.Size = new System.Drawing.Size(61, 21);
+            this.ATRP.TabIndex = 0;
+            this.ATRP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ATRP_KeyDown);
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.groupBox17.Controls.Add(this.ArmModeGroupBox);
+            this.groupBox17.Controls.Add(this.DisarmModeGroupBox);
+            this.groupBox17.Location = new System.Drawing.Point(169, 40);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(179, 184);
+            this.groupBox17.TabIndex = 44;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Mode Parameters";
+            // 
+            // ArmModeGroupBox
+            // 
+            this.ArmModeGroupBox.Controls.Add(this.CheckBoxArmModeList);
+            this.ArmModeGroupBox.Location = new System.Drawing.Point(5, 114);
+            this.ArmModeGroupBox.Name = "ArmModeGroupBox";
+            this.ArmModeGroupBox.Size = new System.Drawing.Size(168, 68);
+            this.ArmModeGroupBox.TabIndex = 4;
+            this.ArmModeGroupBox.TabStop = false;
+            this.ArmModeGroupBox.Text = "Arm Mode";
+            this.ArmModeGroupBox.Visible = false;
+            // 
+            // CheckBoxArmModeList
+            // 
+            this.CheckBoxArmModeList.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.CheckBoxArmModeList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CheckBoxArmModeList.CheckOnClick = true;
+            this.CheckBoxArmModeList.FormattingEnabled = true;
+            this.CheckBoxArmModeList.Location = new System.Drawing.Point(6, 16);
+            this.CheckBoxArmModeList.Name = "CheckBoxArmModeList";
+            this.CheckBoxArmModeList.Size = new System.Drawing.Size(130, 45);
+            this.CheckBoxArmModeList.TabIndex = 1;
+            this.CheckBoxArmModeList.SelectedIndexChanged += new System.EventHandler(this.CheckBoxArmModeList_SelectedIndexChanged);
+            // 
+            // DisarmModeGroupBox
+            // 
+            this.DisarmModeGroupBox.Controls.Add(this.button10);
+            this.DisarmModeGroupBox.Controls.Add(this.DISEValue);
+            this.DisarmModeGroupBox.Controls.Add(this.DISETrackBar);
+            this.DisarmModeGroupBox.Location = new System.Drawing.Point(6, 19);
+            this.DisarmModeGroupBox.Name = "DisarmModeGroupBox";
+            this.DisarmModeGroupBox.Size = new System.Drawing.Size(167, 92);
+            this.DisarmModeGroupBox.TabIndex = 3;
+            this.DisarmModeGroupBox.TabStop = false;
+            this.DisarmModeGroupBox.Text = "Disarm Mode";
+            this.DisarmModeGroupBox.Visible = false;
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.button10.Location = new System.Drawing.Point(32, 67);
+            this.button10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(103, 23);
+            this.button10.TabIndex = 45;
+            this.button10.Text = "Apply Changes";
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click_1);
+            // 
+            // DISEValue
+            // 
+            this.DISEValue.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.DISEValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DISEValue.CausesValidation = false;
+            this.DISEValue.Location = new System.Drawing.Point(6, 41);
+            this.DISEValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.DISEValue.Multiline = true;
+            this.DISEValue.Name = "DISEValue";
+            this.DISEValue.ReadOnly = true;
+            this.DISEValue.Size = new System.Drawing.Size(155, 38);
+            this.DISEValue.TabIndex = 1;
+            // 
+            // DISETrackBar
+            // 
+            this.DISETrackBar.LargeChange = 1;
+            this.DISETrackBar.Location = new System.Drawing.Point(0, 19);
+            this.DISETrackBar.Maximum = 3;
+            this.DISETrackBar.Minimum = 1;
+            this.DISETrackBar.Name = "DISETrackBar";
+            this.DISETrackBar.Size = new System.Drawing.Size(162, 45);
+            this.DISETrackBar.TabIndex = 0;
+            this.DISETrackBar.Value = 1;
+            this.DISETrackBar.Scroll += new System.EventHandler(this.DISETrackBar_Scroll);
+            // 
+            // RefreshStatusParams
+            // 
+            this.RefreshStatusParams.Image = ((System.Drawing.Image)(resources.GetObject("RefreshStatusParams.Image")));
+            this.RefreshStatusParams.Location = new System.Drawing.Point(321, 13);
+            this.RefreshStatusParams.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.RefreshStatusParams.Name = "RefreshStatusParams";
+            this.RefreshStatusParams.Size = new System.Drawing.Size(27, 26);
+            this.RefreshStatusParams.TabIndex = 43;
+            this.RefreshStatusParams.UseVisualStyleBackColor = false;
+            this.RefreshStatusParams.Click += new System.EventHandler(this.RefreshStatusParams_Click);
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.groupBox16.Controls.Add(this.CheckBoxEnableList);
+            this.groupBox16.Location = new System.Drawing.Point(3, 40);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(160, 184);
+            this.groupBox16.TabIndex = 0;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Enable\\Disable";
+            // 
+            // CheckBoxEnableList
+            // 
+            this.CheckBoxEnableList.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.CheckBoxEnableList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CheckBoxEnableList.CheckOnClick = true;
+            this.CheckBoxEnableList.FormattingEnabled = true;
+            this.CheckBoxEnableList.Location = new System.Drawing.Point(6, 19);
+            this.CheckBoxEnableList.Name = "CheckBoxEnableList";
+            this.CheckBoxEnableList.Size = new System.Drawing.Size(148, 165);
+            this.CheckBoxEnableList.TabIndex = 0;
+            this.CheckBoxEnableList.SelectedIndexChanged += new System.EventHandler(this.CheckBoxEnableList_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 650);
+            this.ClientSize = new System.Drawing.Size(1248, 650);
+            this.Controls.Add(this.ParamsStatus);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
@@ -3635,6 +4301,24 @@
             this.groupBox15.PerformLayout();
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
+            this.ParamsStatus.ResumeLayout(false);
+            this.GroupBoxTriggersValue.ResumeLayout(false);
+            this.HeightGroupBox.ResumeLayout(false);
+            this.HeightGroupBox.PerformLayout();
+            this.YawGroupBox.ResumeLayout(false);
+            this.YawGroupBox.PerformLayout();
+            this.FFLGroupBox.ResumeLayout(false);
+            this.FFLGroupBox.PerformLayout();
+            this.AngularGroupBox1.ResumeLayout(false);
+            this.AngularGroupBox1.PerformLayout();
+            this.AngularGroupBox2.ResumeLayout(false);
+            this.AngularGroupBox2.PerformLayout();
+            this.groupBox17.ResumeLayout(false);
+            this.ArmModeGroupBox.ResumeLayout(false);
+            this.DisarmModeGroupBox.ResumeLayout(false);
+            this.DisarmModeGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DISETrackBar)).EndInit();
+            this.groupBox16.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
@@ -3905,6 +4589,57 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button EndButton;
         private System.Windows.Forms.Button PathSource;
+        private System.Windows.Forms.GroupBox ParamsStatus;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.CheckedListBox CheckBoxEnableList;
+        private System.Windows.Forms.Button RefreshStatusParams;
+        private System.Windows.Forms.GroupBox groupBox17;
+        private System.Windows.Forms.TrackBar DISETrackBar;
+        private System.Windows.Forms.GroupBox DisarmModeGroupBox;
+        private System.Windows.Forms.TextBox DISEValue;
+        private System.Windows.Forms.GroupBox ArmModeGroupBox;
+        private System.Windows.Forms.CheckedListBox CheckBoxArmModeList;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.GroupBox GroupBoxTriggersValue;
+        private System.Windows.Forms.GroupBox AngularGroupBox2;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.GroupBox FFLGroupBox;
+        private System.Windows.Forms.Label FFLLabel;
+        private System.Windows.Forms.TextBox FFL;
+        private System.Windows.Forms.Label DHTLabel;
+        private System.Windows.Forms.Label HTCLabel;
+        private System.Windows.Forms.TextBox HTC;
+        private System.Windows.Forms.TextBox DHT;
+        private System.Windows.Forms.Label FFCLabel;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.TextBox FFC;
+        private System.Windows.Forms.GroupBox AngularGroupBox1;
+        private System.Windows.Forms.Label ATC1Label;
+        private System.Windows.Forms.Label ATTSLabel;
+        private System.Windows.Forms.TextBox ATTS;
+        private System.Windows.Forms.TextBox ATC1;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox ATTR;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox ATTP;
+        private System.Windows.Forms.Label ATC2Label;
+        private System.Windows.Forms.Label ATRLLabel;
+        private System.Windows.Forms.TextBox ATC2;
+        private System.Windows.Forms.TextBox ATRL;
+        private System.Windows.Forms.Label ATRRLabel;
+        private System.Windows.Forms.Label ATRPLabel;
+        private System.Windows.Forms.TextBox ATRR;
+        private System.Windows.Forms.GroupBox HeightGroupBox;
+        private System.Windows.Forms.Label HGTLabel;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TextBox HGT;
+        private System.Windows.Forms.GroupBox YawGroupBox;
+        private System.Windows.Forms.Label YRLLabel;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox YRL;
+        private System.Windows.Forms.TextBox ATRP;
+        private System.Windows.Forms.ProgressBar StatusParamsBar;
     }
 }
 

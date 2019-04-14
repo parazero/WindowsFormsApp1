@@ -94,13 +94,13 @@ namespace WindowsFormsApp1
 
         List<string> ParamsThatCauseReset = new List<string> { "ARM", "USD", "IMU" };
         List<string> ParamsThatCauseIgnor = new List<string> { "PSOF", "PSON", "PCV", "RCV" };
-        string[] AllParams = { "ARH", "DRH", "AHS", "VIB", "NVI", "VIT", "HST", "DISE", "ARME", "VIF", "ARM", "PCV", "RCV", "LGR", "MST", "IMU", "SVPY", "SPR", "PTS", "PRV", "RCE", "EBT", "BNC", "MCV", "SPV", "XBT", "MTD", "PWM", "PSOF", "PSON", "PSTO", "RCST", "DST", "USD", "BCLS", "BCLL", "POO", "ADFD", "ADSD", "ADTD", "UFW", "PNO", "SNO", "ESR", "INV", "BET", "SMR", "INC", "TRG", "ATTR", "ATTP", "FFC", "FFL" };
-        string[] M200ParamsValue = { "7", "0", "1", "0.05", "3",  "VIT", "HST", "DISE", "ARME", "100", "2",   "PCV", "RCV", "0",   "MST", "19",  "SVPY", "0.35", "15", "PRV", "0",   "0", "3", "3.5", "SPV", "1", "50", "1", "PSOF", "PSON", "PSTO", "RCST", "0", "1", "BCLS", "BCLL", "POO", "ADFD", "ADSD", "ADTD", "UFW", "0.2", "32", "100", "0", "0.3", "10", "3.5", "1", "55", "55", "300", "6.8" };
-        string[] M600ParamsValue = { "7", "5", "1", "0.05", "5",  "VIT", "HST", "DISE", "ARME", "100", "2",   "PCV", "RCV", "0",   "MST", "19",  "SVPY", "0.35", "15", "PRV", "0",   "0", "3", "3.5", "SPV", "0", "50", "1", "PSOF", "PSON", "PSTO", "RCST", "0", "1", "BCLS", "BCLL", "POO", "ADFD", "ADSD", "ADTD", "UFW", "0.2", "32", "100", "0", "0.3", "10", "3.5", "1", "65", "65", "130", "7" };
-        string[] Phantom4ParamsValue = { "5", "0", "AHS", "0.08", "5", "10", "0.3", "2", "3", "100",   "2",   "PCV", "RCV", "0",   "0",   "19",  "1",    "0.35", "15", "4",   "0",   "EBT", "1", "3.7", "3.5", "0", "1", "1", "1000", "1900", "1", "60", "10", "1", "20", "30", "200", "80", "5", "150", "80", "0.2", "32", "100", "0", "0.3", "10", "3.5", "1", "65", "65", "500", "7.3" };
-        string[] CurrentConf = { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+        string[] AllParams = {"RAW", "ARH", "DRH", "AHS", "VIB", "NVI", "VIT", "HST", "DISE", "ARME", "VIF", "ARM", "PCV", "RCV", "LGR", "MST", "IMU",  "SVPY",     "SPR", "PTS", "PRV", "RCE",   "EBT", "BNC", "MCV", "SPV", "XBT", "MTD", "PWM", "PSOF", "PSON", "PSTO", "RCST", "DST", "USD", "BCLS", "BCLL", "POO", "ADFD", "ADSD", "ADTD", "UFW", "PNO", "SNO", "ESR", "INV", "BET", "SMR", "INC", "TRG", "ATTP", "ATTR", "ATTS", "ATC", "FFC", "FFL", "HTC",   "DHT", "ATRR", "ATRP", "ATRL", "YRL" };
+        string[] M200ParamsValue = { "RAW", "7", "0", "1", "0.05", "3",  "VIT", "HST", "DISE", "ARME", "100", "2",   "PCV", "RCV", "0",   "MST", "19",  "SVPY",    "0.35",  "15", "PRV",   "0",     "0", "3",   "3.5", "SPV",   "1",  "50",   "1", "PSOF", "PSON", "PSTO", "RCST",   "0",   "1", "BCLS", "BCLL", "POO", "ADFD", "ADSD", "ADTD", "UFW", "0.2",  "32", "100", "0", "0.3",    "10", "3.5",   "1",   "55",   "55", "ATTS", "ATC", "300", "6.8", "HTC",   "DHT", "ATRR", "ATRP", "ATRL", "YRL" };
+        string[] M600ParamsValue = { "RAW", "7", "5", "1", "0.05", "5",  "VIT", "HST", "DISE", "ARME", "100", "2",   "PCV", "RCV", "0",   "MST", "19",  "SVPY",    "0.35",  "15", "PRV",   "0",     "0", "3",   "3.5", "SPV",   "0",  "50",   "1", "PSOF", "PSON", "PSTO", "RCST",   "0",   "1", "BCLS", "BCLL", "POO", "ADFD", "ADSD", "ADTD", "UFW", "0.2",  "32", "100", "0", "0.3",    "10", "3.5",   "1",   "65",   "65", "ATTS", "ATC", "130", "7",   "HTC",   "DHT", "ATRR", "ATRP", "ATRL", "YRL" };
+        string[] Phantom4ParamsValue = { "1","5", "0", "AHS", "0.08", "5", "10", "0.3", "2", "3", "100",   "2",   "PCV", "RCV", "0",   "0",      "23",     "1",    "0.35",  "15",  "4",    "0",   "EBT", "1",   "3.7", "3.5",   "0",   "1",   "1", "1000", "1900",    "1",   "60",  "10",   "1",   "20",   "30", "200",   "80",    "5",  "150",  "80", "0.2",  "32", "100", "0", "0.3",    "10", "3.5",   "1",   "65",   "65", "85",     "5", "300", "5.8",   "8", "-0.17",   "20",   "20",  "250", "300" };
+        string[] CurrentConf = { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
         //int[] bits = { 0, 0, 0, 0, 0 };
-        double[] CurrentConfValue = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        double[] CurrentConfValue = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         //bool SetConfiguration = false;
 
         int[] IndexPorts = { -1, -1, -1, -1, -1 };
@@ -128,6 +128,8 @@ namespace WindowsFormsApp1
             textBoxReader5th.ScrollBars = ScrollBars.Both;
             FlashTextBox.ScrollBars = ScrollBars.Both;
             ParamsList1.ScrollBars = ScrollBars.Both;
+            BurnSystem.Text="Nano";
+            BurnSystem.Enabled = false;
         }
 
         void getAvailablePorts()
@@ -244,12 +246,402 @@ namespace WindowsFormsApp1
                     EnableIMU1.Enabled = true;
                     configuration1.Enabled = true;
                     textBox1.Text = PortName1st.Text;
+                    ParamsStatus.Enabled = true;
+                    RefreshStatusParams.Enabled = true;
+                    updateParamsStatus();
                 }
             }
             catch (UnauthorizedAccessException)
             {
                 textBoxReader1st.Text = "Unauthorized Access";
             }
+        }
+        private double checkValueParam(string param)
+        {
+            double ValueParam;
+            param = param + ":";
+            int indexParam = FullTextSmartAir5units[0].IndexOf(param);
+            if (indexParam == -1)
+                ValueParam = -111.111;
+            else
+            {
+                string TempTxt = FullTextSmartAir5units[0].Substring(indexParam);
+                int indexEndStr = TempTxt.IndexOf("[");
+                TempTxt = TempTxt.Substring(0, indexEndStr);
+                string[] splitStr = TempTxt.Split(':');
+                try
+                {
+                    ValueParam = Convert.ToDouble(splitStr[1]);
+                }
+                catch
+                {
+                    int endValParam = splitStr[1].IndexOf("\r\n");
+                    ValueParam = Convert.ToDouble(splitStr[1].Substring(0, endValParam));
+                }
+            }
+            return ValueParam;
+        }
+        private void updateParamsStatus()
+        {
+            int i = 0;
+            StatusParamsBar.Visible = true;
+            List<string> EnableParams = new List<string>() { "RAW", "XBT", "PWM", "USD", "EBT" };
+            List<string> ModeParams = new List<string>() { "ARM", "TRG", "DISE", "ARME", "SVPY" };
+            List<string> ValueParams = new List<string>() { "ARH", "DRH", "VIB", "NVI", "VIT","MTD"};
+            List<string> MoreValuesParams = new List<string>() { "AHS", "PTS", "VIF", "PSTO", "RCST","DST" };
+
+            FullTextSmartAir5units[0] = "";
+            StatusParamsBar.Value = 2;Application.DoEvents();
+            WriteToSingleSmartAir("ee?", 0);
+            StatusParamsBar.Value = 5; Application.DoEvents();
+            string checkboxName;
+            if (FullTextSmartAir5units[0].Length > 5000)
+            {
+                if (textBoxReader1st.Text.Length < 7800)
+                    textBoxReader1st.Clear();
+                i = 0;
+                foreach (string param in EnableParams)
+                {
+                    checkboxName = param;
+                    if (FullTextSmartAir5units[0].Contains(param))
+                    {
+                        i++;
+                        if (param == "USD")
+                            checkboxName = "Use SD Card";
+                        if (param == "XBT")
+                            checkboxName = "External battery";
+                        if (param == "RAW")
+                            checkboxName = "Raw data to log";
+                        if (param == "PWM")
+                            checkboxName = "PWM signal";
+                        if (!CheckBoxEnableList.Items.Contains(checkboxName))
+                            CheckBoxEnableList.Items.Add(checkboxName);
+                        if (checkValueParam(param) == 1)
+                            CheckBoxEnableList.SetItemChecked(i - 1, true);
+
+                        Thread.Sleep(5); Application.DoEvents();
+                    }
+                }
+                StatusParamsBar.Value = 15; Application.DoEvents();
+                int ValueParam;
+                string ImuBinary;
+                foreach (string param in ModeParams)
+                {
+                    if (FullTextSmartAir5units[0].Contains(param))
+                    {
+                        Thread.Sleep(5); Application.DoEvents();
+                        if (FullTextSmartAir5units[0].Contains(param))
+                        {
+                            ValueParam = Convert.ToInt32(checkValueParam(param));
+                            switch (param)
+                            {
+                                case "ARM":
+                                    i++;
+                                    if (!CheckBoxEnableList.Items.Contains("Auto Arm"))
+                                        CheckBoxEnableList.Items.Add("Auto Arm");
+                                    if (!CheckBoxEnableList.Items.Contains("Auto Disarm"))
+                                        CheckBoxEnableList.Items.Add("Auto Disarm");
+                                    ImuBinary = Convert.ToString(ValueParam, 2);
+                                    if (ImuBinary == "1")
+                                        ImuBinary = "01";
+                                    int[] bitsARM = ImuBinary.PadRight(2, '0') // Add 0's from left
+                                                            .Select(c => int.Parse(c.ToString())) // convert each char to int
+                                                            .ToArray();
+                                    Array.Reverse(bitsARM);
+                                    if (bitsARM[1] == 1)
+                                    {
+                                        CheckBoxEnableList.SetItemChecked(i - 1, true);
+                                        i++;
+                                        CheckBoxEnableList.SetItemChecked(i - 1, true);
+                                        Application.DoEvents();
+                                    }
+                                    else if (bitsARM[0] == 1)
+                                    {
+                                        CheckBoxEnableList.SetItemChecked(i - 1, false);
+                                        i++;
+                                        CheckBoxEnableList.SetItemChecked(i - 1, true);
+                                        Application.DoEvents();
+                                    }
+                                    else
+                                    {
+                                        CheckBoxEnableList.SetItemChecked(i - 1, false);
+                                        i++;
+                                        CheckBoxEnableList.SetItemChecked(i - 1, false);
+                                        Application.DoEvents();
+                                    }
+                                    break;
+                                case "TRG":
+                                    i++;
+                                    if (!CheckBoxEnableList.Items.Contains("Auto Trigger"))
+                                        CheckBoxEnableList.Items.Add("Auto Trigger");
+                                    if (!CheckBoxEnableList.Items.Contains("Maintenance mode"))
+                                        CheckBoxEnableList.Items.Add("Maintenance mode");
+                                    ImuBinary = Convert.ToString(ValueParam, 2);
+                                    if (ImuBinary == "1")
+                                        ImuBinary = "01";
+                                    int[] bitsTRG = ImuBinary.PadRight(2, '0') // Add 0's from left
+                                                            .Select(c => int.Parse(c.ToString())) // convert each char to int
+                                                            .ToArray();
+                                    Array.Reverse(bitsTRG);
+                                    if (bitsTRG[0] == 1)
+                                    {
+                                        CheckBoxEnableList.SetItemChecked(i - 1, true);
+                                        i++;
+                                        CheckBoxEnableList.SetItemChecked(i - 1, false);
+                                        Application.DoEvents();
+                                    }
+                                    else if (bitsTRG[1] == 1)
+                                    {
+                                        CheckBoxEnableList.SetItemChecked(i - 1, false);
+                                        i++;
+                                        CheckBoxEnableList.SetItemChecked(i - 1, true);
+                                        Application.DoEvents();
+                                    }
+                                    else
+                                    {
+                                        CheckBoxEnableList.SetItemChecked(i - 1, false);
+                                        i++;
+                                        CheckBoxEnableList.SetItemChecked(i - 1, false);
+                                        Application.DoEvents();
+                                    }
+                                    break;
+                                case "ARME"://+1 - height changed, +2 - vibrations
+                                    if (!CheckBoxArmModeList.Items.Contains("from height change"))
+                                        CheckBoxArmModeList.Items.Add("from height change");
+                                    if (!CheckBoxArmModeList.Items.Contains("from vibration"))
+                                        CheckBoxArmModeList.Items.Add("from vibration");
+                                    ArmModeGroupBox.Visible = true;
+                                    Thread.Sleep(5); Application.DoEvents();
+                                    if (ValueParam == 1)
+                                    {
+                                        CheckBoxArmModeList.SetItemChecked(0, true);
+                                        CheckBoxArmModeList.SetItemChecked(1, false);
+                                        Application.DoEvents();
+                                    }
+                                    else if (ValueParam == 2)
+                                    {
+                                        CheckBoxArmModeList.SetItemChecked(0, false);
+                                        CheckBoxArmModeList.SetItemChecked(1, true);
+                                        Application.DoEvents();
+                                    }
+                                    else if (ValueParam == 3)
+                                    {
+                                        CheckBoxArmModeList.SetItemChecked(0, true);
+                                        CheckBoxArmModeList.SetItemChecked(1, true);
+                                        Application.DoEvents();
+                                    }
+
+                                    break;
+                                case "SVPY":
+                                    i++;
+                                    if (!CheckBoxEnableList.Items.Contains("Use Servo"))
+                                        CheckBoxEnableList.Items.Add("Use Servo");
+                                    if (!CheckBoxEnableList.Items.Contains("Use Pyro"))
+                                        CheckBoxEnableList.Items.Add("Use Pyro");
+                                    if (ValueParam == 1)
+                                    {
+                                        CheckBoxEnableList.SetItemChecked(i - 1, true);
+                                        i++;
+                                        CheckBoxEnableList.SetItemChecked(i - 1, false);
+                                        Application.DoEvents();
+                                    }
+                                    else if (ValueParam == 2)
+                                    {
+                                        CheckBoxEnableList.SetItemChecked(i - 1, false);
+                                        i++;
+                                        CheckBoxEnableList.SetItemChecked(i - 1, true);
+                                        Application.DoEvents();
+                                    }
+                                    else if (ValueParam == 3)
+                                    {
+                                        CheckBoxEnableList.SetItemChecked(i - 1, true);
+                                        i++;
+                                        CheckBoxEnableList.SetItemChecked(i - 1, true);
+                                        Application.DoEvents();
+                                    }
+                                    else
+                                    {
+                                        CheckBoxEnableList.SetItemChecked(i - 1, false);
+                                        i++;
+                                        CheckBoxEnableList.SetItemChecked(i - 1, false);
+                                        Application.DoEvents();
+                                    }
+                                    break;
+                                case "DISE":
+                                    DisarmModeGroupBox.Visible = true;
+                                    if (ValueParam == 1)
+                                    {
+                                        DISETrackBar.Value = 1;
+                                        DISEValue.Text = "Disarm from low height";
+                                        Application.DoEvents();
+                                    }
+                                    else if (ValueParam == 2)
+                                    {
+                                        DISETrackBar.Value = 2;
+                                        DISEValue.Text = "Disarm from no vibrations";
+                                        Application.DoEvents();
+                                    }
+                                    else if (ValueParam == 4)
+                                    {
+                                        DISETrackBar.Value = 3;
+                                        DISEValue.Text = "Disarm from no vibrations\nand no height change";
+                                        Application.DoEvents();
+                                    }
+                                    break;
+                            }
+                        }
+                    }
+                }
+                StatusParamsBar.Value = 38; Application.DoEvents();
+                double ImuVal = checkValueParam("IMU");
+                {
+                    ATC1.Visible = true;
+                    ATC1Label.Visible = true;
+                    ATTSLabel.Visible = true;
+                    ATTS.Visible = true;
+                    HTCLabel.Visible = true;
+                    HTC.Visible = true;
+                    DHTLabel.Visible = true;
+                    DHT.Visible = true;
+                    YRLLabel.Visible = true;
+                    YRL.Visible = true;
+                    ATC2Label.Visible = true;
+                    ATC2.Visible = true;
+                    ATRLLabel.Visible = true;
+                    ATRL.Visible = true;
+                    ATRRLabel.Visible = true;
+                    ATRR.Visible = true;
+                    ATRPLabel.Visible = true;
+                    ATRP.Visible = true;
+                }
+                string ImuValBinary = Convert.ToString(Convert.ToInt32(ImuVal), 2);
+                int[] bits = ImuValBinary.PadLeft(6, '0') // Add 0's from left
+                             .Select(c => int.Parse(c.ToString())) // convert each char to int
+                             .ToArray();
+                Array.Reverse(bits);
+
+                if (bits[0] == 1)
+                {
+                    AngularGroupBox1.Visible = true;
+                    double ATTPVal = checkValueParam("ATTP");
+                    ATTP.Text = ATTPVal.ToString();
+                    double ATTRVal = checkValueParam("ATTR");
+                    ATTR.Text = ATTRVal.ToString();
+                    double ATTSVal = checkValueParam("ATTS");
+                    if (ATTSVal == -111.111)
+                    {
+                        ATTSLabel.Visible = false;
+                        ATTS.Visible = false;
+                    }
+                    else
+                        ATTS.Text = ATTSVal.ToString();
+                    double ATCVal = checkValueParam("ATC");
+                    if (ATCVal == -111.111)
+                    {
+                        ATC1.Visible = false;
+                        ATC1Label.Visible = false;
+                    }
+                    else
+                        ATC1.Text = ATCVal.ToString();
+                    Application.DoEvents(); Thread.Sleep(10);
+                }
+                else
+                    AngularGroupBox1.Visible = false;
+                StatusParamsBar.Value = 46; Application.DoEvents();
+                if (bits[1] == 1)
+                {
+                    FFLGroupBox.Visible = true;
+                    double FFCVal = checkValueParam("FFC");
+                    FFC.Text = FFCVal.ToString();
+                    double FFLVal = checkValueParam("FFL");
+                    FFL.Text = FFLVal.ToString();
+                    double HTCVal = checkValueParam("HTC");
+                    if (HTCVal == -111.111)
+                    {
+                        HTCLabel.Visible = false;
+                        HTC.Visible = false;
+                    }
+                    else
+                        HTC.Text = HTCVal.ToString();
+                    double DHTVal = checkValueParam("DHT");
+                    if (DHTVal == -111.111)
+                    {
+                        DHTLabel.Visible = false;
+                        DHT.Visible = false;
+                    }
+                    else
+                        DHT.Text = DHTVal.ToString();
+                    Application.DoEvents(); Thread.Sleep(10);
+                }
+                else
+                    FFLGroupBox.Visible = false;
+                StatusParamsBar.Value = 58; Application.DoEvents();
+                if (bits[2] == 1)
+                {
+                    AngularGroupBox2.Visible = true;
+                    YawGroupBox.Visible = true;
+                    double ATRPVal = checkValueParam("ATRP");
+                    if (ATRPVal == -111.111)
+                    {
+                        ATRPLabel.Visible = false;
+                        ATRP.Visible = false;
+                    }
+                    else
+                        ATRP.Text = ATRPVal.ToString();
+                    double ATRRVal = checkValueParam("ATRR");
+                    if (ATRRVal == -111.111)
+                    {
+                        ATRRLabel.Visible = false;
+                        ATRR.Visible = false;
+                    }
+                    else
+                        ATRR.Text = ATRRVal.ToString();
+                    double ATRLVal = checkValueParam("ATRL");
+                    if (ATRLVal == -111.111)
+                    {
+                        ATRLLabel.Visible = false;
+                        ATRL.Visible = false;
+                    }
+                    else
+                        ATRL.Text = ATRLVal.ToString();
+                    double ATCVal = checkValueParam("ATC");
+                    if (ATCVal == -111.111)
+                    {
+                        ATC2Label.Visible = false;
+                        ATC2.Visible = false;
+                    }
+                    else
+                        ATC2.Text = ATCVal.ToString();
+                    double YRLVal = checkValueParam("YRL");
+                    if (YRLVal == -111.111)
+                    {
+                        YRLLabel.Visible = false;
+                        YRL.Visible = false;
+                    }
+                    else
+                        YRL.Text = YRLVal.ToString();
+                    Application.DoEvents(); Thread.Sleep(10);
+                }
+                else
+                {
+                    AngularGroupBox2.Visible = false;
+                    YawGroupBox.Visible = false;
+                }
+                StatusParamsBar.Value = 70; Application.DoEvents();
+                if (bits[5] == 1)
+                {
+                    HeightGroupBox.Visible = true;
+                    double HGTVal = checkValueParam("HGT");
+                    HGT.Text = HGTVal.ToString();
+                    Application.DoEvents(); Thread.Sleep(10);
+                }
+                else
+                    HeightGroupBox.Visible = false;
+                StatusParamsBar.Value = 81; Application.DoEvents();
+                StatusParamsBar.Value = StatusParamsBar.Maximum; Application.DoEvents();
+                Thread.Sleep(500);StatusParamsBar.Visible = false;Application.DoEvents();
+            }
+            
         }
         private void Open2ndPort(object sender, EventArgs e)
         {
@@ -417,6 +809,8 @@ namespace WindowsFormsApp1
             EnableRC1.Enabled = false;
             EnableIMU1.Enabled = false;
             Fire1.Enabled = false;
+            ParamsStatus.Enabled = false;
+            RefreshStatusParams.Enabled = false;
             ((TextBox)textBox1).Text = String.Empty;
             PortName1st.SelectedIndex = -1;
             BaudRate1st.SelectedIndex = -1;
@@ -858,27 +1252,33 @@ namespace WindowsFormsApp1
         {
 
         }
-
+        bool ReadSP = true;
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             //int n = Convert.ToInt32(s);
-            SerialPort sp = (SerialPort)sender;
-            string dataIN1 = sp.ReadExisting();
-            if (!dataIN1.Equals(""))
+            if (ReadSP)
             {
-                strTemp1 = dataIN1;
-                FullTextSmartAir5units[0] += dataIN1;
-                this.Invoke(new EventHandler(ShowData1));
+                SerialPort sp = (SerialPort)sender;
+                string dataIN1 = sp.ReadExisting();
+                if (!dataIN1.Equals(""))
+                {
+                    strTemp1 = dataIN1;
+                    FullTextSmartAir5units[0] += dataIN1;
+                    this.Invoke(new EventHandler(ShowData1));
+                }
             }
         }
         private void ShowData1(object sender, EventArgs e)
         {
-            textBoxReader1st.Text += strTemp1;
-            textBoxReader1st.Select(textBoxReader1st.TextLength, 0);
-            textBoxReader1st.ScrollToCaret();
-            FlashTextBox.Text += strTemp1;
-            FlashTextBox.Select(FlashTextBox.TextLength, 0);
-            FlashTextBox.ScrollToCaret();
+            if (ReadSP)
+            {
+                textBoxReader1st.Text += strTemp1;
+                textBoxReader1st.Select(textBoxReader1st.TextLength, 0);
+                textBoxReader1st.ScrollToCaret();
+                FlashTextBox.Text += strTemp1;
+                FlashTextBox.Select(FlashTextBox.TextLength, 0);
+                FlashTextBox.ScrollToCaret();
+            }
         }
         private void serialPort2_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -2741,6 +3141,7 @@ namespace WindowsFormsApp1
             ParamBar1.Visible = false;
             ParamBar1.Value = 0;
             Cancel1.Visible = false;
+            updateParamsStatus();
         }
 
         private void M600Param1_Click(object sender, EventArgs e)
@@ -2790,6 +3191,7 @@ namespace WindowsFormsApp1
             ParamBar1.Visible = false;
             ParamBar1.Value = 0;
             Cancel1.Visible = false;
+            updateParamsStatus();
 
         }
 
@@ -3175,6 +3577,7 @@ namespace WindowsFormsApp1
                 groupBox2.Enabled = true;
                 RcButton1.Enabled = true;
                 CancelImu1.Visible = false;
+                updateParamsStatus();
             }
             Application.DoEvents();
         }
@@ -3296,6 +3699,7 @@ namespace WindowsFormsApp1
             ParamBar1.Visible = false;
             ParamBar1.Value = 0;
             Cancel1.Visible = false;
+            updateParamsStatus();
         }
 
         private void Phantom4_FinalConfiguration(int s)
@@ -3541,9 +3945,12 @@ namespace WindowsFormsApp1
                         DialogResult result = folderBrowserDialog1.ShowDialog();
                         if (result == DialogResult.OK)
                         {
+                            string filename = new DirectoryInfo(folderBrowserDialog1.FileName).Name;
+                            FlashTextBox.Text += "\r\n\r\nVersion " + filename + " is selected \r\n"; Application.DoEvents();
                             LocalPathFM = folderBrowserDialog1.FileName;
                             Application.DoEvents();
                             Thread.Sleep(1000);
+                            //FlashTextBox.ScrollBars = ScrollBars.Both;
                             YmodemUploadFile(LocalPathFM); Thread.Sleep(100); Application.DoEvents();
                         }
                         else
@@ -3666,8 +4073,8 @@ namespace WindowsFormsApp1
             if (BurnSystem.Text == "Nano")
             {
                 WriteToSingleSmartAir("ee?", 0);
-                Application.DoEvents();
                 Thread.Sleep(1200);
+                Application.DoEvents();
                 if (FullTextSmartAir5units[0].Contains("!System.....................:"))
                 {
                     FullTextSmartAir5units[0] = "";
@@ -3683,7 +4090,7 @@ namespace WindowsFormsApp1
                     {
                         Application.DoEvents();
                         ts = resetStopWatch.Elapsed;
-                        if (ts.TotalSeconds > 25)
+                        if (ts.TotalSeconds > 10)
                         {
                             TryCount++;
                             WriteToSingleSmartAir("trg 2", 0);
@@ -3700,11 +4107,10 @@ namespace WindowsFormsApp1
                     WriteToSingleSmartAir("rst", 0);
                     TryCount = 4;
                     Application.DoEvents();
-
                 }
-                if (TryCount < 3)
-                    WriteToSingleSmartAir("rst", 0);
-                Thread.Sleep(2500);
+                /*if ((TryCount < 3)/* && FullTextSmartAir5units[0].Contains("Bootloader ver"))
+                    WriteToSingleSmartAir("rst", 0);*/
+                Thread.Sleep(500);Application.DoEvents();
                 if (FullTextSmartAir5units[0].Contains("Bootloader ver")) 
                 {
                     SMAbutton.Enabled = true;
@@ -3749,6 +4155,9 @@ namespace WindowsFormsApp1
         {
 
         }
+        int PacketNumber = 0;
+        int packetNumber = 0;
+        int NumTotPackage = 0;
         public bool YmodemUploadFile(string path)//string path
         {
             //Application.DoEvents();
@@ -3765,16 +4174,18 @@ namespace WindowsFormsApp1
             /* THE PACKET: 1029 bytes */
             /* header: 3 bytes */
             // STX
-            int PacketNumber = 0;
-            int packetNumber = 0;
+            /*int PacketNumber = 0;
+            int packetNumber = 0;*/
             int invertedPacketNumber = 255;
             /* data: 1024 bytes */
             byte[] data = new byte[dataSize];
             /* footer: 2 bytes */
             byte[] CRC = new byte[crcSize];
-
             /* get the file */
             FileStream fileStream = new FileStream(@path, FileMode.Open, FileAccess.Read);
+            double numTotPackage = (fileStream.Length / (dataSize - 1));
+            var NumTotPackageVAR = Math.Floor(numTotPackage);
+            NumTotPackage = Convert.ToInt32(NumTotPackageVAR);
             try
             {
                 //Application.DoEvents();
@@ -3788,7 +4199,7 @@ namespace WindowsFormsApp1
 
                 sendYmodemInitialPacket(STX, packetNumber, invertedPacketNumber, data, dataSize, path, fileStream, CRC, crcSize);
                 if (serialPort1.ReadByte() != ACK)
-                {
+                 {
                     Console.WriteLine("Can't send the initial packet.");
                     return false;
                 }
@@ -3800,7 +4211,6 @@ namespace WindowsFormsApp1
                 bool ACKstatus = false;
                 int fileReadCount;
                 int Cerr = 0;
-
                 do
                 {
                     ACKstatus = false;
@@ -3813,12 +4223,16 @@ namespace WindowsFormsApp1
 
                     /* calculate packetNumber */
                     packetNumber++;
+                    PacketNumber++;
                     if (packetNumber > 255)
                     {
-                        PacketNumber += packetNumber;
                         packetNumber -= 256;
                     }
-                        
+                    
+                    /*ReadSP = false;
+                    
+                    ReadSP = true;*/
+
                     Console.WriteLine(packetNumber);
 
                     /* calculate invertedPacketNumber */
@@ -3842,6 +4256,8 @@ namespace WindowsFormsApp1
                         if (serialPort1.ReadByte() == ACK)
                         {
                             ACKstatus = true;
+                            /*ShowFlashData("\r\npackage number " + PacketNumber + "/" + NumTotPackage + " was sent ");
+                            Application.DoEvents();*/
                         }
                         else if (ts1.Seconds > 22)
                         {
@@ -3850,18 +4266,19 @@ namespace WindowsFormsApp1
                         }
                         if (Cerr == 3)
                         {
-                            PacketNumber = PacketNumber + packetNumber;
+                            //PacketNumber = PacketNumber + packetNumber;
                             return false;
                         }
                             
                     }
+                    //Application.DoEvents();Thread.Sleep(2000);FlashTextBox.ScrollToCaret();
                 } while (dataSize == fileReadCount);
                 //Application.DoEvents();
                 /* send EOT (tell the downloader we are finished) */
                 Thread.Sleep(500);
                 serialPort1.Write(new byte[] { EOT }, 0, 1);
                 /* send closing packet */
-                PacketNumber = PacketNumber+packetNumber;
+                //PacketNumber = PacketNumber+packetNumber;
                 packetNumber = 0;
                 invertedPacketNumber = 255;
                 data = new byte[dataSize];
@@ -3882,11 +4299,11 @@ namespace WindowsFormsApp1
             finally
             {
                 Thread.Sleep(500); Application.DoEvents();
-                double x = Math.Floor(Convert.ToDouble(fileStream.Length) / 1023)+1;
-                FlashTextBox.Text += "\n\r";
-                FlashTextBox.Text += "\r\n" + PacketNumber.ToString() + "/" + x.ToString() + " packets sent\n\r";
+                //FlashTextBox.Text += "\n\r";
+                FlashTextBox.Text += "\r\n" + PacketNumber.ToString() + "/" + NumTotPackage.ToString() + " packets sent\r\n";
                 Application.DoEvents();
-                Thread.Sleep(3000);
+                Thread.Sleep(1000);
+                PacketNumber = 0;
                 Application.DoEvents();
                 fileStream.Close();
             }
@@ -3894,6 +4311,15 @@ namespace WindowsFormsApp1
             Console.WriteLine("File transfer is succesful");
             return true;
         }
+
+        private void ShowFlashData(string text)
+        {
+            //FlashTextBox.Text += "\r\npackage number " + PacketNumber + "/" + NumTotPackage + " was sent ";
+            FlashTextBox.Text += text;
+            FlashTextBox.Select(FlashTextBox.TextLength, 0);
+            FlashTextBox.ScrollToCaret();
+        }
+
         private void sendYmodemInitialPacket(byte STX, int packetNumber, int invertedPacketNumber, byte[] data, int dataSize, string path, FileStream fileStream, byte[] CRC, int crcSize)
         {
             //Application.DoEvents();
@@ -4401,6 +4827,500 @@ namespace WindowsFormsApp1
         private void button10_Click(object sender, EventArgs e)
         {
             MessageBox.Show(path);
+        }
+
+        private void label28_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RefreshStatusParams_Click(object sender, EventArgs e)
+        {
+            updateParamsStatus();
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void label27_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DISETrackBar_Scroll(object sender, EventArgs e)
+        {
+            if (DISETrackBar.Value == 1)
+                DISEValue.Text = "Disarm from low height";
+            if (DISETrackBar.Value == 2)
+                DISEValue.Text = "Disarm from no vibrations";
+            if (DISETrackBar.Value == 3)
+                DISEValue.Text = "Disarm from no vibrations\nand no height change";
+        }
+
+        private void ApplyChangesButton_Click(object sender, EventArgs e)
+        {
+                       
+        }
+
+        private void CheckBoxEnableList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int ValueParamMarked = 1, ValueParamUnmarked = 0;
+            string param="";
+            if (CheckBoxEnableList.Text == "Raw data to log")
+            {
+                ValueParamMarked = 1;
+                ValueParamUnmarked = 0;
+                param = "RAW";
+            }
+            if (CheckBoxEnableList.Text == "External battery")
+            {
+                ValueParamMarked = 1;
+                ValueParamUnmarked = 0;
+                param = "XBT";
+            }
+            if (CheckBoxEnableList.Text == "PWM signal")
+            {
+                ValueParamMarked = 1;
+                ValueParamUnmarked = 0;
+                param = "PWM";
+            }
+            if (CheckBoxEnableList.Text == "Use SD Card")
+            {
+                ValueParamMarked = 1;
+                ValueParamUnmarked = 0;
+                param = "USD";
+            }
+            if (CheckBoxEnableList.Text == "Auto Arm")
+            {
+                ValueParamMarked = 2;
+                int AutoDisIndex = CheckBoxEnableList.Items.IndexOf(CheckBoxEnableList.Text)+1;
+                if (CheckBoxEnableList.GetItemCheckState(AutoDisIndex) == CheckState.Checked)
+                    ValueParamUnmarked = 1;
+                else
+                    ValueParamUnmarked = 0;
+                if (CheckBoxEnableList.GetItemCheckState(AutoDisIndex-1) == CheckState.Checked)
+                    CheckBoxEnableList.SetItemCheckState(AutoDisIndex, CheckState.Checked);
+                param = "ARM";
+            }
+            if (CheckBoxEnableList.Text == "Auto Disarm")
+            {
+                ValueParamMarked = 1;
+                int AutoArmIndex = CheckBoxEnableList.Items.IndexOf(CheckBoxEnableList.Text) - 1;
+                if ((CheckBoxEnableList.GetItemCheckState(AutoArmIndex+1) == CheckState.Unchecked))
+                    CheckBoxEnableList.SetItemCheckState(AutoArmIndex, CheckState.Unchecked);
+                ValueParamUnmarked = 0;
+                param = "ARM";
+            }
+            if (CheckBoxEnableList.Text == "Auto Trigger")
+            {
+                ValueParamMarked = 1;
+                int MainenanceIndex = CheckBoxEnableList.Items.IndexOf(CheckBoxEnableList.Text)+1;
+                if ((CheckBoxEnableList.GetItemCheckState(MainenanceIndex-1) == CheckState.Checked))
+                    CheckBoxEnableList.SetItemCheckState(MainenanceIndex, CheckState.Unchecked);
+                ValueParamUnmarked = 0;
+                param = "TRG";
+            }
+            if (CheckBoxEnableList.Text == "Maintenance mode")
+            {
+                ValueParamMarked = 2;
+                int TriggerIndex = CheckBoxEnableList.Items.IndexOf(CheckBoxEnableList.Text) -1;
+                if ((CheckBoxEnableList.GetItemCheckState(TriggerIndex+1) == CheckState.Checked))
+                    CheckBoxEnableList.SetItemCheckState(TriggerIndex, CheckState.Unchecked);
+                else
+                    CheckBoxEnableList.SetItemCheckState(TriggerIndex, CheckState.Checked);
+                ValueParamUnmarked = 1;
+                param = "TRG";
+            }
+            if (CheckBoxEnableList.Text == "Use Servo")
+            {
+                int UseServoIndex = CheckBoxEnableList.Items.IndexOf(CheckBoxEnableList.Text);
+                int UsePyroIndex = UseServoIndex + 1;
+                if ((CheckBoxEnableList.GetItemCheckState(UsePyroIndex) == CheckState.Checked))
+                {
+                    ValueParamMarked = 3;
+                    ValueParamUnmarked = 2;
+                }
+                else
+                {
+                    ValueParamMarked = 1;
+                    ValueParamUnmarked = 0;
+                }
+                param = "SVPY";
+            }
+            if (CheckBoxEnableList.Text == "Use Pyro")
+            {
+                int UsePyroIndex = CheckBoxEnableList.Items.IndexOf(CheckBoxEnableList.Text);
+                int UseServoIndex = UsePyroIndex - 1;
+                if ((CheckBoxEnableList.GetItemCheckState(UseServoIndex) == CheckState.Checked))
+                {
+                    ValueParamMarked = 3;
+                    ValueParamUnmarked = 1;
+                }
+                else
+                {
+                    ValueParamMarked = 2;
+                    ValueParamUnmarked = 0;
+                }
+                    
+
+                param = "SVPY";
+            }
+
+
+            int IndexParam = CheckBoxEnableList.Items.IndexOf(CheckBoxEnableList.Text);
+            if (CheckBoxEnableList.GetItemCheckState(IndexParam) == CheckState.Checked)
+            {
+                WriteToSingleSmartAir(param + " " + ValueParamMarked, 0);
+            }
+            else
+            {
+                WriteToSingleSmartAir(param + " " + ValueParamUnmarked, 0);
+                
+            }
+        }
+
+        private void button10_Click_1(object sender, EventArgs e)
+        {
+            if (DISETrackBar.Value == 1)
+                WriteToSingleSmartAir("DISE 1",0);
+            if (DISETrackBar.Value == 2)
+                WriteToSingleSmartAir("DISE 2",0);
+            if (DISETrackBar.Value == 3)
+                WriteToSingleSmartAir("DISE 4",0);
+        }
+
+        private void CheckBoxArmModeList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int IndexHeight = 0;
+            int IndexVibration = 1;
+            if ((CheckBoxArmModeList.GetItemCheckState(IndexHeight) == CheckState.Checked) &&
+                (CheckBoxArmModeList.GetItemCheckState(IndexVibration) == CheckState.Checked))
+                WriteToSingleSmartAir("ARME 3", 0);
+            else if ((CheckBoxArmModeList.GetItemCheckState(IndexHeight) == CheckState.Unchecked) &&
+                (CheckBoxArmModeList.GetItemCheckState(IndexVibration) == CheckState.Checked))
+                WriteToSingleSmartAir("ARME 2", 0);
+            else if ((CheckBoxArmModeList.GetItemCheckState(IndexHeight) == CheckState.Checked) &&
+                    (CheckBoxArmModeList.GetItemCheckState(IndexVibration) == CheckState.Unchecked))
+                WriteToSingleSmartAir("ARME 1", 0);
+            else
+                WriteToSingleSmartAir("ARME 0", 0);
+            
+        }
+
+        private void ATTP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ATTP_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                double value = 0;
+                try
+                {
+                    value = Convert.ToDouble(ATTP.Text);
+                    WriteToSingleSmartAir("ATTP " + ATTP.Text, 0);
+                    string[] temp = sender.ToString().Split(':');
+                    int tempIndex = temp[1].IndexOf("\r");
+                    string Temp = temp[1].Substring(1, tempIndex);
+                    ATTP.Text = Temp;
+                }
+                catch
+                {
+                    MessageBox.Show("Try Again", "The inserted value is incorrect");
+                    ATTP.Clear();
+                }
+            }
+        }
+
+        private void ATTR_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                double value = 0;
+                try
+                {
+                    value = Convert.ToDouble(ATTR.Text);
+                    WriteToSingleSmartAir("ATTR " + ATTR.Text, 0);
+                    string[] temp = sender.ToString().Split(':');
+                    int tempIndex = temp[1].IndexOf("\r");
+                    string Temp = temp[1].Substring(1, tempIndex);
+                    ATTR.Text = Temp;
+                }
+                catch
+                {
+                    MessageBox.Show("Try Again", "The inserted value is incorrect");
+                    ATTR.Clear();
+                }
+            }
+        }
+
+        private void ATTS_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                double value = 0;
+                try
+                {
+                    value = Convert.ToDouble(ATTS.Text);
+                    WriteToSingleSmartAir("ATTS " + ATTS.Text, 0);
+                    string[] temp = sender.ToString().Split(':');
+                    int tempIndex = temp[1].IndexOf("\r");
+                    string Temp = temp[1].Substring(1, tempIndex);
+                    ATTS.Text = Temp;
+                }
+                catch
+                {
+                    MessageBox.Show("Try Again", "The inserted value is incorrect");
+                    ATTS.Clear();
+                }
+            }
+        }
+
+        private void ATC1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                double value = 0;
+                try
+                {
+                    value = Convert.ToDouble(ATC1.Text);
+                    WriteToSingleSmartAir("ATC " + ATC1.Text, 0);
+                    string[] temp = sender.ToString().Split(':');
+                    int tempIndex = temp[1].IndexOf("\r");
+                    string Temp = temp[1].Substring(1, tempIndex);
+                    ATC1.Text = Temp; ATC2.Text = Temp;
+                }
+                catch
+                {
+                    MessageBox.Show("Try Again", "The inserted value is incorrect");
+                    ATC1.Clear();
+                }
+            }
+        }
+
+        private void ATC2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                double value = 0;
+                try
+                {
+                    value = Convert.ToDouble(ATC2.Text);
+                    WriteToSingleSmartAir("ATC " + ATC2.Text, 0);
+                    string[] temp = sender.ToString().Split(':');
+                    int tempIndex = temp[1].IndexOf("\r");
+                    string Temp = temp[1].Substring(1, tempIndex);
+                    ATC1.Text = Temp; ATC2.Text = Temp;
+                }
+                catch
+                {
+                    MessageBox.Show("Try Again", "The inserted value is incorrect");
+                    ATC2.Clear();
+                }
+            }
+        }
+
+        private void ATRL_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                double value = 0;
+                try
+                {
+                    value = Convert.ToDouble(ATRL.Text);
+                    WriteToSingleSmartAir("ATRL " + ATRL.Text, 0);
+                    string[] temp = sender.ToString().Split(':');
+                    int tempIndex = temp[1].IndexOf("\r");
+                    string Temp = temp[1].Substring(1, tempIndex);
+                    ATRL.Text = Temp;
+                }
+                catch
+                {
+                    MessageBox.Show("Try Again", "The inserted value is incorrect");
+                    ATRL.Clear();
+                }
+            }
+        }
+
+        private void ATRR_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                double value = 0;
+                try
+                {
+                    value = Convert.ToDouble(ATRR.Text);
+                    WriteToSingleSmartAir("ATRR " + ATRR.Text, 0);
+                    string[] temp = sender.ToString().Split(':');
+                    int tempIndex = temp[1].IndexOf("\r");
+                    string Temp = temp[1].Substring(1, tempIndex);
+                    ATRR.Text = Temp;
+                }
+                catch
+                {
+                    MessageBox.Show("Try Again", "The inserted value is incorrect");
+                    ATRR.Clear();
+                }
+            }
+        }
+
+        private void ATRP_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                double value = 0;
+                try
+                {
+                    value = Convert.ToDouble(ATRP.Text);
+                    WriteToSingleSmartAir("ATRP " + ATRP.Text, 0);
+                    string[] temp = sender.ToString().Split(':');
+                    int tempIndex = temp[1].IndexOf("\r");
+                    string Temp = temp[1].Substring(1, tempIndex);
+                    ATRP.Text = Temp;
+                }
+                catch
+                {
+                    MessageBox.Show("Try Again", "The inserted value is incorrect");
+                    ATRP.Clear();
+                }
+            }
+        }
+
+        private void FFC_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                double value = 0;
+                try
+                {
+                    value = Convert.ToDouble(FFC.Text);
+                    WriteToSingleSmartAir("FFC " + FFC.Text, 0);
+                    string[] temp = sender.ToString().Split(':');
+                    int tempIndex = temp[1].IndexOf("\r");
+                    string Temp = temp[1].Substring(1, tempIndex);
+                    FFC.Text = Temp;
+                }
+                catch
+                {
+                    MessageBox.Show("Try Again", "The inserted value is incorrect");
+                    FFC.Clear();
+                }
+            }
+        }
+
+        private void FFL_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                double value = 0;
+                try
+                {
+                    value = Convert.ToDouble(FFL.Text);
+                    value = 9.8 - value;
+                    WriteToSingleSmartAir("FFL " + value, 0);
+                    string[] temp = sender.ToString().Split(':');
+                    int tempIndex = temp[1].IndexOf("\r");
+                    string Temp = temp[1].Substring(1, tempIndex);
+                    FFL.Text = Temp;
+                }
+                catch
+                {
+                    MessageBox.Show("Try Again", "The inserted value is incorrect");
+                    FFL.Clear();
+                }
+            }
+        }
+
+        private void HTC_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                double value = 0;
+                try
+                {
+                    value = Convert.ToDouble(HTC.Text);
+                    WriteToSingleSmartAir("HTC " + HTC.Text, 0);
+                    string[] temp = sender.ToString().Split(':');
+                    int tempIndex = temp[1].IndexOf("\r");
+                    string Temp = temp[1].Substring(1, tempIndex);
+                    HTC.Text = Temp;
+                }
+                catch
+                {
+                    MessageBox.Show("Try Again", "The inserted value is incorrect");
+                    HTC.Clear();
+                }
+            }
+        }
+
+        private void DHT_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                double value = 0;
+                try
+                {
+                    value = Convert.ToDouble(DHT.Text);
+                    WriteToSingleSmartAir("DHT " + DHT.Text, 0);
+                    string[] temp = sender.ToString().Split(':');
+                    int tempIndex = temp[1].IndexOf("\r");
+                    string Temp = temp[1].Substring(1, tempIndex);
+                    DHT.Text = Temp;
+                }
+                catch
+                {
+                    MessageBox.Show("Try Again", "The inserted value is incorrect");
+                    DHT.Clear();
+                }
+            }
+        }
+
+        private void YRL_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                double value = 0;
+                try
+                {
+                    value = Convert.ToDouble(YRL.Text);
+                    WriteToSingleSmartAir("YRL " + YRL.Text, 0);
+                    string[] temp = sender.ToString().Split(':');
+                    int tempIndex = temp[1].IndexOf("\r");
+                    string Temp = temp[1].Substring(1, tempIndex);
+                    YRL.Text = Temp;
+                }
+                catch
+                {
+                    MessageBox.Show("Try Again", "The inserted value is incorrect");
+                    YRL.Clear();
+                }
+            }
+        }
+
+        private void HGT_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                double value = 0;
+                try
+                {
+                    value = Convert.ToDouble(HGT.Text);
+                    WriteToSingleSmartAir("HGT " + HGT.Text, 0);
+                    string[] temp = sender.ToString().Split(':');
+                    int tempIndex = temp[1].IndexOf("\r");
+                    string Temp = temp[1].Substring(1, tempIndex);
+                    HGT.Text = Temp;
+                }
+                catch
+                {
+                    MessageBox.Show("Try Again", "The inserted value is incorrect");
+                    HGT.Clear();
+                }
+            }
         }
     }
 }
